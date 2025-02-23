@@ -6,6 +6,10 @@
 	</head>
 
 	<body>
+		<!--Image to be used with one php function later throughout all webpages-->
+		<img src="Images/banner.png" alt="banner">
+	
+	<!--Below from lab02-->
 		<?php  
 		
 		$products = array(	"Playstation 5",
