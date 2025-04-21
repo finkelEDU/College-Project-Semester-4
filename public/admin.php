@@ -29,7 +29,8 @@
 	}
 ?>
 
-<?php include "templates/header.php"; ?>
+<?php include "templates/header_special.php"; ?>
+<?php include "templates/nav.php"; ?>
 
 <?php
 	if(isset($_POST["submit_all_members"])){

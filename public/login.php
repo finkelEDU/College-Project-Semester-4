@@ -1,23 +1,24 @@
-<html>
-	<head>
-		<title>Login Page</title>
-	</head>
-	
-	<body>	
-	<img src="Images/banner.png" alt="banner">
-	
+<?php
+	require "../common.php";
+?>
+
+<?php include "templates/header_guest.php"; ?>
+<?php include "templates/nav.php"; ?>
 	<h1>LOGIN</h1>
 	<form method="post">
 		<label for="username"><strong>Username</strong></label>
-		<input type="text" name="username" id="username" required>
+		<input type="text" name="inputUsername" id="inputUsername" required>
 		<br>
 		<label for="password"><strong>Password</strong></label>
-		<input type="password" name="password" id="password" required>
+		<input type="password" name="inputPassword" id="inputPassword" required>
 		<br>
-		<input type="submit" name="submit" value="Submit">
+		<input type="submit" name="Submit" value="submit">
 	</form>
 	
-	<!--Start session if details match on database-->
+	<?php
+		require "../src/login_logic.php";
+		$login = new login_logic();
+		$login->check();
+	?>
 	
-	</body>
-</html>
+<?php include "templates/footer.php"; ?>

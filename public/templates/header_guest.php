@@ -1,10 +1,5 @@
 <?php
 	session_start();
-
-	if($_SESSION["Active"] == false){
-		header("location:login.php");
-		exit;
-	}
 ?>
 
 <!DOCTYPE html>
@@ -22,4 +17,3 @@
 
 <body>
 	<img src="images/banner.png" alt="banner">
-	<h1>Welcome <?php echo $_SESSION["Username"];?> </h1>

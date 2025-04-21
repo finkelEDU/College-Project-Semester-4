@@ -29,7 +29,8 @@
 	}
 ?>
 
-<?php include "templates/header.php" ?>
+<?php include "templates/header_guest.php"; ?>
+<?php include "templates/nav.php"; ?>
 	<h1>WELCOME!</h1>
 	<p>
 		You are very close to becoming a Two Guys Store member! Just fill in the form below to get started.

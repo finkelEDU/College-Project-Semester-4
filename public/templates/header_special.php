@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	if($_SESSION["Active"] == false){
+	if($_SESSION["Admin"] == false){
 		header("location:login.php");
 		exit;
 	}
