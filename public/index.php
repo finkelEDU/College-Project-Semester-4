@@ -12,6 +12,7 @@
 			"Xbox One",
 			"Nintendo Switch",
 			"Nintendo Wii",
+			"Nintendo DS",
 			"PC"
 		);
 		
