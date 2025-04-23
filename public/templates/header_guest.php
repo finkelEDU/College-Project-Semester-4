@@ -16,4 +16,7 @@
 <head>
 
 <body>
-	<img src="images/banner.png" alt="banner">
+<div id="HeaderBanner">
+        <h1>TwoGuys</h1>
+        <?php?>
+    </div>
