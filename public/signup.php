@@ -34,26 +34,26 @@
 
 <?php include "templates/header_guest.php"; ?>
 <?php include "templates/nav.php"; ?>
-	<h1>WELCOME!</h1>
-	<p>
-		You are very close to becoming a Two Guys Store member! Just fill in the form below to get started.
-	</p>
-        
-    <div>
-		<form method="post">
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" required>
-			
-			<label for="password">Password</label>
-			<input type="text" name="password" id="password" required>
-			
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email" required>
-			
-			<label for="dob">Date of Birth</label>
-			<input type="date", name="dob" id="dob" required>
-			<br><br>
-			<input type="submit" name="submit" value="Submit">
-		</form>
-	</div>
+<div class="login-box"> <?php // Reuse the login-box class for consistent styling ?>
+    <h1>WELCOME!</h1>
+    <p style="margin-bottom: 20px; color: var(--text-medium);"> <?php // Added style for better spacing and color ?>
+        You are very close to becoming a Two Guys Store member! Just fill in the form below to get started.
+    </p>
+
+    <form method="post">
+        <label for="username"><strong>Username</strong></label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="password"><strong>Password</strong></label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="email"><strong>Email Address</strong></label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="dob"><strong>Date of Birth</strong></label>
+        <input type="date" name="dob" id="dob" required>
+
+        <input type="submit" name="submit" value="Sign Up">
+    </form>
+</div>
 <?php include "templates/footer.php" ?>

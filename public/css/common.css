@@ -134,3 +134,55 @@ nav a:hover {
     font-size: 1.4em;
     color: var(--text-light);
 }
+
+.login-box {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+}
+
+.login-box label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    color: var(--text-medium);
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"],
+.login-box input[type="email"], 
+.login-box input[type="date"] {  
+    width: 93%; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: inherit;
+}
+.login-box input[type="submit"] {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.login-box input[type="submit"]:hover {
+    background-color: var(--accent-hover);
+}
