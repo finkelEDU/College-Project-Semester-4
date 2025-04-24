@@ -18,4 +18,4 @@
         <h1>TwoGuys</h1>
         <?php?>
     </div>
-	<p>Welcome <?php echo $_SESSION["Username"];?> </p>
+	

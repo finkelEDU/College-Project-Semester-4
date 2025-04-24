@@ -20,6 +20,7 @@ session_start();
 <?php include "templates/nav.php"; ?>
 
 <h2>Products</h2>
+<p id=welcomeMSG>Hello, <?php echo $_SESSION["Username"];?>, browse our latest catalogue here!</p>
 
 <div class="product-container">
  

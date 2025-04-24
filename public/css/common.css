@@ -127,3 +127,10 @@ nav a:hover {
 .product-item button:hover {
     background-color: var(--accent-hover);
 }
+
+#welcomeMSG{
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.4em;
+    color: var(--text-light);
+}
