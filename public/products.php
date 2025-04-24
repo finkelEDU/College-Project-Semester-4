@@ -1,16 +1,18 @@
 <?php
-	try{
-		require "../common.php";
-		require_once "../src/DBconnect.php";
+    $result = [];
 
-		$sql = "SELECT * FROM Product";
+    try{
+        require "../common.php";
+        require_once "../src/DBconnect.php";
 
-		$statement = $connection->prepare($sql);
-		$statement->execute();
-		$result = $statement->fetchAll();
-	}catch(PDOException $error){
-		echo $sql . "<br>" . $error->getMessage();
-	}
+        $sql = "SELECT * FROM Product";
+
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+    }catch(PDOException $error){
+        echo "Database Error: " . $error->getMessage();
+    }
 ?>
 
 <?php include "templates/header.php"; ?>
@@ -18,23 +20,17 @@
 
 <h2>Products</h2>
 
-<?php foreach ($result as $row){ ?>
-	<table>
-		<tr><h3><?php echo escape($row["product_name"]) ?></tr><h3></tr>
-		<tr><?php echo escape($row["product_description"]) ?></tr><br>
-		<tr><?php echo "&#8364;" . escape($row["product_cost"]) ?></tr><br>
-		<tr><img src=<?php echo $row["product_image"] . ">"?></tr><br>
-	</table>
+<div class="product-container">
+ 
+    <?php foreach ($result as $row): ?>
+        <div class="product-item">
+            <img src="<?php echo escape($row["product_image"]); ?>" alt="<?php echo escape($row["product_name"]); ?>">
+            <h3><?php echo escape($row["product_name"]); ?></h3>
+            <p><?php echo escape($row["product_description"]); ?></p>
+            <p class="price"><?php echo "€" . escape($row["product_cost"]); ?></p>
+            <button>View Details</button>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-	<button>OK</button><hr>
-
-<?php } ?>
-
-
-
-
-
-
-
-
-<?php include "templates/footer.php";
+<?php include "templates/footer.php"; ?>
