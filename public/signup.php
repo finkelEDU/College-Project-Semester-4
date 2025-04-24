@@ -27,7 +27,8 @@
 	}
 	
 	if(isset($_POST["submit"]) && $statement){
-		echo $new_user["username"] . " successfully added!";
+		//echo $new_user["username"] . " successfully added!";
+		echo "Welcome to the website, ". $new_user["username"] . "!!";
 	}
 ?>
 
