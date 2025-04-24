@@ -43,5 +43,5 @@ INSERT INTO Product(product_name, product_description, product_cost, product_ima
 INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Nintendo Switch OLED", "DESCRIPTION", 499.99, "images/nintendo_switch_oled.png");
 INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Nintendo Switch", "DESCRIPTION", 499.99, "images/nintendo_switch.png");
 INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Nintendo Switch Lite", "DESCRIPTION", 499.99, "images/nintendo_switch_lite.png");
-INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Nintendo Wii", "DESCRIPTION", 499.99, "images/nintendo_wii.png");
+INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Nintendo Wii", "DESCRIPTION", 499.99, "images/nintendo_wii.jpg");
 INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Steam Deck", "DESCRIPTION", 499.99, "images/steam_deck.jpg");

@@ -1,11 +1,11 @@
 :root {
-    --bg-dark: #1a1a1a;
-    --bg-medium: #2c2c2c;
+    --bg-dark: #1e1e1e;
+    --bg-medium: #424242;
     --text-light: #e0e0e0;
     --text-medium: #b0b0b0;
     --accent: #007bff;
     --accent-hover: #0056b3;
-    --border-light: #4f4f4f;
+    --border-light: #626262;
 }
 
 body {
@@ -55,7 +55,6 @@ nav a:hover {
 #HeaderBanner {
     background-color: var(--bg-medium);
     padding: 15px;
-    text-align: center;
     border-bottom: 1px solid var(--border-light);
 }
 
