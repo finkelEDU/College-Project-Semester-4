@@ -19,7 +19,6 @@ session_start();
 <?php include "templates/header.php"; ?>
 <?php include "templates/nav.php"; ?>
 
-<h2>Products</h2>
 <p id=welcomeMSG>
 <?php
 if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])) {

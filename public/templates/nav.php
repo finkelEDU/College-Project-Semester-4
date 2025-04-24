@@ -1,12 +1,16 @@
+<?php
+    $currentPage = basename($_SERVER['PHP_SELF']);
+?>
 
 <nav>
-    <a href="index.php">HOME PAGE</a>
-    <a href="products.php">PRODUCTS</a>
+    <a href="index.php" class="<?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">HOME PAGE</a>
+    <a href="products.php" class="<?php echo ($currentPage == 'products.php') ? 'active' : ''; ?>">PRODUCTS</a>
     <?php if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])): ?>
-        <?php // user logged in, show log out btn ?>
-        <a href="logout.php">LOG OUT</a>
+        <?php // user logged in show: ?>
+        <a href="logout.php">LOG OUT</a> 
     <?php else: ?>
-        <a href="login.php">LOGIN</a>
-        <a href="signup.php">SIGN UP</a>
+        <?php // user logged out show: ?>
+        <a href="login.php" class="<?php echo ($currentPage == 'login.php') ? 'active' : ''; ?>">LOGIN</a>
+        <a href="signup.php" class="<?php echo ($currentPage == 'signup.php') ? 'active' : ''; ?>">SIGN UP</a>
     <?php endif; ?>
 </nav>

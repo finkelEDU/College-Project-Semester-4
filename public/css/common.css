@@ -44,12 +44,17 @@ nav a {
     padding: 10px 15px;
     text-decoration: none;
     margin: 0 5px;
-    border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 nav a:hover {
     background-color: var(--border-light);
+}
+
+nav a.active {
+    background-color: var(--bg-dark); 
+    color: var(--accent); 
+    font-weight: bold; 
 }
 
 #HeaderBanner {
