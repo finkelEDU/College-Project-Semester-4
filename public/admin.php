@@ -26,6 +26,19 @@
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
+	}else if(isset($_POST["submit_all_orders"])){
+		try{
+			require "../common.php";
+			require_once "../src/DBconnect.php";
+
+			$sql = "SELECT * FROM Orders";
+
+			$statement = $connection->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+		}catch(PDOException $error){
+			echo $sql . "<br>" . $error->getMessage();
+		}
 	}
 ?>
 
@@ -46,6 +59,7 @@
 			<th>Password</th>
 			<th>Email</th>
 			<th>Date of Birth</th>
+			<th>Member Type</th>
 		</tr>
 	</thead>
 	
@@ -58,6 +72,7 @@
 		<td><?php echo escape($row["member_password"]); ?></td>
 		<td><?php echo escape($row["member_email"]); ?></td>
 		<td><?php echo escape($row["member_dob"]); ?></td>
+		<td><?php echo escape($row["member_type"]); ?></td>
 	</tr>
 	
 	<?php } ?>
@@ -101,12 +116,41 @@
 		<?php }else{ ?>
 		> No results!!
 	<?php }
+	}else if(isset($_POST["submit_all_orders"])){
+		if($result && $statement->rowCount() > 0){
+	?>
+<h2>Results</h2>
+<table>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Product Name</th>
+			<th>Member ID</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	
+	<?php foreach ($result as $row){ ?>
+	<tr>
+		<td><?php echo escape($row["orders_id"]); ?></td>
+		<td><?php echo escape($row["product_name"]); ?></td>
+		<td><?php echo escape($row["member_id"]); ?></td>
+	</tr>
+	
+	<?php } ?>
+	</tbody>
+	</table>
+		<?php }else{ ?>
+		> No results!!
+	<?php }
 	}?>
 
 <form method="post">
 	<br>
 	<input type="submit" name="submit_all_members" value="Show All Members">
 	<input type="submit" name="submit_all_products" value="Show All Products">
+	<input type="submit" name="submit_all_orders" value="Show All Orders">
 </form>
 
 <p>
