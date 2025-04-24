@@ -6,6 +6,15 @@ class Member{
 	public $memberPassword;
 	public $memberEmail;
 	public $memberDOB;
+
+	//CONSTRUCTOR
+	public function __construct($memberID, $memberUsername, $memberPassword, $memberEmail, $memberDOB){
+		$this->memberID = $memberID;
+		$this->memberUsername = $memberUsername;
+		$this->memberPassword = $memberPassword;
+		$this->memberEmail = $memberEmail;
+		$this->memberDOB = $memberDOB;
+	}
 	
 	//SETTERS
 	public function setMemberID($memberID){

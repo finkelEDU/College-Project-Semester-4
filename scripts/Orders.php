@@ -4,9 +4,16 @@ class Orders{
 	public $ordersID;
 	public $ordersDate;
 	public $memberID;
+	
+	//CONSTRUCTOR
+	public function __construct($ordersID, $ordersDate, $memberID){
+		$this->ordersID = $ordersID;
+		$this->ordersDate = $ordersDate;
+		$this->memberID = $memberID;
+	}
 		
 	//SETTERS
-	public funtion setOrdersID($ordersID){
+	public function setOrdersID($ordersID){
 		$this->ordersID = $ordersID;
 	}
 	

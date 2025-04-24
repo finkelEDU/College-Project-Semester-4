@@ -6,6 +6,15 @@ class Product{
 	public $productDescription;
 	public $productCost;
 	public $productImage;
+
+	//CONSTRUCTOR
+	public function __construct($productID,$productName,$productDescription,$productCost,$productImage){
+		$this->productID = $productID;
+		$this->productName = $productName;
+		$this->productDescription = $productDescription;
+		$this->productCost = $productCost;
+		$this->productImage = $productImage;
+	}
 	
 	//SETTERS
 	public function setProductID($productID){
