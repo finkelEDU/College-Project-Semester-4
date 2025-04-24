@@ -21,7 +21,7 @@
 <head>
 
 <body>
-	<<div id="HeaderBanner">
+	<div id="HeaderBanner">
         <h1>TwoGuys</h1>
         <?php?>
     </div>
