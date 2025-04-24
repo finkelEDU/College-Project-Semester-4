@@ -75,7 +75,6 @@ nav a.active {
     background-color: var(--bg-medium);
     border-radius: 8px;
     border: 1px solid var(--border-light);
-    text-align: center;
 }
 
 .index-content p {
@@ -96,6 +95,31 @@ nav a.active {
     margin: 20px 0;
     display: inline-block;
     text-align: left;
+}
+
+.index-content .platform-list li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text-light);
+}
+
+.index-content .platform-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.index-content .cta-text {
+    font-weight: bold;
+    margin-top: 25px;
+    color: var(--text-light);
+}
+
+.login-box {
+    width: 300px;
 }
 
 .product-container {
