@@ -10,12 +10,14 @@
 				"password"	=>	escape($_POST["password"]),
 				"email"		=>	escape($_POST["email"]),
 				"dob"		=>	escape($_POST["dob"]),
+				"type"      =>  'Member'
 			);
 			
-			$sql = sprintf("INSERT INTO %s (member_%s) values (%s)", "Member",
-							implode(", member_", array_keys($new_user)),
-							":" . implode(", :", array_keys($new_user))
-							); 
+			$sql = sprintf("INSERT INTO %s (%s) values (%s)",
+                            "Member", 
+                            implode(", ", array_map(function($key) { return "member_" . $key; }, array_keys($new_user))), 
+                            ":" . implode(", :", array_keys($new_user))
+                           ); 
 							
 			$statement = $connection->prepare($sql);
 			$statement->execute($new_user);
