@@ -187,12 +187,42 @@ nav a.active {
     background-color: var(--accent-hover);
 }
 
+.product-details-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px 35px;
+    background-color: var(--bg-medium);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    text-align: center;
+}
+
+.product-details-container h2 {
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.product-details-image {
+    max-width: 80%;
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-dark);
+    padding: 10px;
+}
+
 #welcomeMSG{
     text-align: center;
     margin: 20px 0;
     font-size: 1.4em;
     color: var(--text-light);
 }
+
 
 .login-box {
     width: 300px;
