@@ -32,6 +32,26 @@ td, th {
     border-bottom: 1px solid var(--border-light);
 }
 
+.btn-primary {
+    background-color: var(--accent);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 15px; 
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; 
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    text-decoration: none; 
+    display: inline-block; 
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+
 nav {
     background-color: var(--bg-medium);
     padding: 10px 0;
@@ -171,21 +191,6 @@ nav a.active {
     flex-grow: 0;
 }
 
-.product-item button {
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-    flex-grow: 0;
-}
-
-.product-item button:hover {
-    background-color: var(--accent-hover);
-}
 
 .product-details-container {
     max-width: 600px;
@@ -215,6 +220,23 @@ nav a.active {
     background-color: var(--bg-dark);
     padding: 10px;
 }
+
+.product-details-container p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.product-details-container .price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.6em;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
 
 #welcomeMSG{
     text-align: center;

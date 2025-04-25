@@ -36,11 +36,11 @@ if (isset($_GET['id'])) {
         <img src="<?php echo escape($product["product_image"]); ?>" alt="<?php echo escape($product["product_name"]); ?>" class="product-details-image">
         <p><?php echo escape($product["product_description"]); ?></p>
         <p class="price"><?php echo "€" . escape($product["product_cost"]); ?></p>
-        <a href="products.php"><button>Back to Products</button></a>
+        <a href="products.php"><button class="btn-primary">Back to Products</button></a>
 
     <?php else: ?>
         <p>Error, Product Unavailable</p>
-        <a href="products.php"><button>Back to Products</button></a>
+        <a href="products.php"><button class="btn-primary">Back to Products</button></a>
     <?php endif; ?>
 </div>
 
