@@ -3,7 +3,7 @@
 ?>
 
 <nav>
-    <a href="index.php" class="<?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">HOME PAGE</a>
+    <a href="index.php" class="<?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">HOME</a>
     <a href="products.php" class="<?php echo ($currentPage == 'products.php') ? 'active' : ''; ?>">PRODUCTS</a>
     <?php if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])): ?>
         <?php // user logged in show: ?>

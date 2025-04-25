@@ -11,9 +11,18 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-light);
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+    font-size: inherit; 
 }
 
 label {
@@ -85,6 +94,7 @@ nav a.active {
 
 #HeaderBanner h1 {
     margin: 0;
+    font-family: Consolas, 'Courier New', Courier, monospace;
     color: var(--text-light);
 }
 
@@ -174,6 +184,16 @@ nav a.active {
     margin: 10px 0;
     font-size: 1.1em;
     color: var(--text-light);
+}
+
+.product-item h3,
+.product-details-container h2 {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+}
+
+.product-item .price,
+.product-details-container .price {
+    font-family: Consolas, 'Courier New', Courier, monospace;
 }
 
 .product-item p {
