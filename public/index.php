@@ -9,17 +9,17 @@
     <ul class="platform-list"> 
         <?php
         $products = array(
-            "Playstation 5",
-            "Playstation 4",
-            "Xbox Series",
-            "Xbox One",
-            "Nintendo Switch",
-            "Nintendo Wii",
-            "PC"
+            "Playstation 5" => "images/ps5.png",
+            "Playstation 4" => "images/ps4.png",
+            "Xbox Series" => "images/xbox_series_x.png",
+            "Xbox One" => "images/xbox_one_x.png",
+            "Nintendo Switch" => "images/nintendo_switch.png",
+            "Nintendo Wii" => "images/nintendo_wii.jpg",
+            "Steam Deck" => "images/steam_deck.jpg"
         );
 
-        foreach ($products as $product) { 
-          echo "<li>" . $product . "</li>"; 
+        foreach ($products as $name => $iconPath) { 
+          echo "<li><img src='" . $iconPath . "' alt='" . $name . " icon' class='platform-icon'>" . $name . "</li>"; 
         }
         ?>
     </ul>
