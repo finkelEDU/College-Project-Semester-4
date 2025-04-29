@@ -53,11 +53,11 @@ if (isset($_GET['id'])) {
     $cart = new Cart();
 
     if(isset($_POST["add"])){        
-        if($_SESSION["Item1"] == -1){$_SESSION["Item1"] = $product_id - 1;}
-        else if($_SESSION["Item2"] == -1){$_SESSION["Item2"] = $product_id - 1;}
-        else if($_SESSION["Item3"] == -1){$_SESSION["Item3"] = $product_id - 1;}
-        else if($_SESSION["Item4"] == -1){$_SESSION["Item4"] = $product_id - 1;}
-        else if($_SESSION["Item5"] == -1){$_SESSION["Item5"] = $product_id - 1;}
+        if($_SESSION["Item1"] == -1){$_SESSION["Item1"] = $product_id;}
+        else if($_SESSION["Item2"] == -1){$_SESSION["Item2"] = $product_id;}
+        else if($_SESSION["Item3"] == -1){$_SESSION["Item3"] = $product_id;}
+        else if($_SESSION["Item4"] == -1){$_SESSION["Item4"] = $product_id;}
+        else if($_SESSION["Item5"] == -1){$_SESSION["Item5"] = $product_id;}
 
         header("location:products.php");
 		exit;
