@@ -16,11 +16,18 @@ session_start();
 ?>
 
 <?php include "templates/header.php"; ?>
-<?php include "templates/nav.php"; ?>
+
 
 <div class="product-container">
+    <?php
+        //Initalize $cost variable to use
+        $cost = 0;
+    ?>
+
     <?php foreach ($result as $row): ?>
         <?php
+
+            //Check to see if any of the added products match the product_id, display if true
             if(     $row["product_id"] == $_SESSION["Item1"] 
                 ||  $row["product_id"] == $_SESSION["Item2"]
                 ||  $row["product_id"] == $_SESSION["Item3"] 
@@ -35,8 +42,18 @@ session_start();
             <p class="price"><?php echo "€" . escape($row["product_cost"]); ?></p>
             <a href="product_details.php?id=<?php echo escape($row["product_id"]); ?>">
             </a>
+                
+            <?php 
+                //Add the cost of the item in foreach loop to $cost variable
+                $cost += $row["product_cost"];
+            ?>
         </div> <?php } ?>
     <?php endforeach; ?>
+
+    <?php
+        //Display the total cost of the items
+        echo "<p>The total cost for this order will be: €" . $cost;
+    ?>
 
     <form method="post">
         <input class="btn-primary" type="submit" name="buy" value="BUY ITEMS">
