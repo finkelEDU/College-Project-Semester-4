@@ -28,7 +28,6 @@ if (isset($_GET['id'])) {
 ?>
 
 <?php include "templates/header.php"; ?>
-<?php include "templates/nav.php"; ?>
 
 <div class="product-details-container">
     <?php if ($product):?>
