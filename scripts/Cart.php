@@ -42,9 +42,7 @@ class Cart{
 			$this->cartItems[0] = $itemNumber;
 		}
 	}
-
-
-
+	
 	//DISPLAY DETAILS
 	public function displayCart(){
 		echo "<br>CART ITEMS";
