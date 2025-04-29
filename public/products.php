@@ -38,7 +38,6 @@ if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])) {
             <a href="product_details.php?id=<?php echo escape($row["product_id"]); ?>">
             <button class="btn-primary">View Details</button>
             </a>
-            <?php $number++; ?>
         </div>
     <?php endforeach; ?>
 </div>
