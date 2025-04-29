@@ -1,9 +1,53 @@
+<?php
+session_start();
+
+    try{
+        require "../common.php";
+        require_once "../src/DBconnect.php";
+
+        $sql = "SELECT * FROM Product";
+
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+    }catch(PDOException $error){
+        echo "Database Error: " . $error->getMessage();
+    }
+?>
+
 <?php include "templates/header.php"; ?>
 <?php include "templates/nav.php"; ?>
 
-<h1>SHOPPING PLACEHOLDER</h1>
-<p>A fully functional shopping cart should be available here. It should have functions such as deleting items or changing quantity to the shopping cart. There should also be an option to pay for the items, leading to a new webpage with a form.</p>
+<div class="product-container">
+    <?php foreach ($result as $row): ?>
+        <?php
+            if(     $row["product_id"] == $_SESSION["Item1"] 
+                ||  $row["product_id"] == $_SESSION["Item2"]
+                ||  $row["product_id"] == $_SESSION["Item3"] 
+                ||  $row["product_id"] == $_SESSION["Item4"] 
+                ||  $row["product_id"] == $_SESSION["Item5"]
+            ){
+        ?>
         
-<p>On top of this, there will be nice design using CSS to make all website pages look much better to look at and experience.</p>
+        <div class="product-item">
+            <img src="<?php echo escape($row["product_image"]); ?>" alt="<?php echo escape($row["product_name"]); ?>">
+            <h3><?php echo escape($row["product_name"]); ?></h3>
+            <p class="price"><?php echo "€" . escape($row["product_cost"]); ?></p>
+            <a href="product_details.php?id=<?php echo escape($row["product_id"]); ?>">
+            </a>
+        </div> <?php } ?>
+    <?php endforeach; ?>
+
+    <form method="post">
+        <input class="btn-primary" type="submit" name="buy" value="BUY ITEMS">
+    </form>
+</div>
+
+<?php
+    if(isset($_POST["buy"])){
+        echo "Work on order is not finished yet.";
+    }
+?>
+
 
 <?php include "templates/footer.php"; ?>
