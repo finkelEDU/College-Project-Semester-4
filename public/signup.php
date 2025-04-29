@@ -33,10 +33,9 @@
 ?>
 
 <?php include "templates/header_guest.php"; ?>
-<?php include "templates/nav.php"; ?>
-<div class="login-box"> <?php // Reuse the login-box class for consistent styling ?>
+<div class="login-box"> <?php // Reusing?>
     <h1>WELCOME!</h1>
-    <p style="margin-bottom: 20px; color: var(--text-medium);"> <?php // Added style for better spacing and color ?>
+    <p style="margin-bottom: 20px; color: var(--text-medium);"> 
         You are very close to becoming a Two Guys Store member! Just fill in the form below to get started.
     </p>
 

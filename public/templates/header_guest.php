@@ -18,5 +18,5 @@
 <body>
 <div id="HeaderBanner">
         <h1>TwoGuys</h1>
-        <?php?>
+		<?php include "templates/nav.php" ?>
     </div>

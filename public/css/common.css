@@ -60,20 +60,13 @@ td, th {
     background-color: var(--accent-hover);
 }
 
-
-nav {
-    background-color: var(--bg-medium);
-    padding: 10px 0;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
 nav a {
     color: var(--text-light);
-    padding: 10px 15px;
+    padding: 5px 10px;
     text-decoration: none;
     margin: 0 5px;
     transition: background-color 0.3s ease;
+    border-radius: 4px;
 }
 
 nav a:hover {
@@ -87,8 +80,11 @@ nav a.active {
 }
 
 #HeaderBanner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     background-color: var(--bg-medium);
-    padding: 15px;
+    padding: 10px 15px;
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -96,6 +92,7 @@ nav a.active {
     margin: 0;
     font-family: Consolas, 'Courier New', Courier, monospace;
     color: var(--text-light);
+    margin-right: auto;
 }
 
 .index-content {

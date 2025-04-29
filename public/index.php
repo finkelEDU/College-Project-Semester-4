@@ -1,5 +1,5 @@
 <?php include "templates/header_guest.php"; ?>
-<?php include "templates/nav.php"; ?>
+
 
 <div class="index-content"> 
     <p class="intro-text">Welcome to the Two Guys Store! Here, you can find games, consoles and accessories to your liking!</p>
@@ -15,7 +15,6 @@
             "Xbox One",
             "Nintendo Switch",
             "Nintendo Wii",
-            "Nintendo DS",
             "PC"
         );
 

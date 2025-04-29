@@ -23,6 +23,7 @@
 <body>
 	<div id="HeaderBanner">
         <h1>TwoGuys</h1>
+		<?php include "templates/nav.php" ?>
         <?php?>
     </div>
 	<p>Welcome <?php echo $_SESSION["Username"];?> </p>

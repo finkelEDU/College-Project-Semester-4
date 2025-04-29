@@ -3,7 +3,6 @@
 ?>
 
 <?php include "templates/header_guest.php"; ?>
-<?php include "templates/nav.php"; ?>
     <div class="login-box"> 
         <h1>LOGIN</h1>
         <form method="post">
