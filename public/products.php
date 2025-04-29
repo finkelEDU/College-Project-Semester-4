@@ -42,17 +42,5 @@ if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])) {
     <?php endforeach; ?>
 </div>
 
-<?php
-require "../scripts/Cart.php";
-$cart = new Cart();
-
-$cart->setCartItem(0, $_SESSION["Item1"]);
-$cart->setCartItem(1, $_SESSION["Item2"]);
-$cart->setCartItem(2, $_SESSION["Item3"]);
-$cart->setCartItem(3, $_SESSION["Item4"]);
-$cart->setCartItem(4, $_SESSION["Item5"]);
-
-//Test showing cart items as integers (-1 = empty)
-echo $cart->displayCart(); ?>
 
 <?php include "templates/footer.php"; ?>

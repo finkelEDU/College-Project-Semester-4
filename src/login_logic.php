@@ -30,11 +30,10 @@ class login_logic{
 							$_SESSION["Admin"] = false;
 						}
 
-						$_SESSION["Item1"] = -1;
-						$_SESSION["Item2"] = -1;
-						$_SESSION["Item3"] = -1;
-						$_SESSION["Item4"] = -1;
-						$_SESSION["Item5"] = -1;
+						//keeps track of members cart
+						if (!isset($_SESSION['cart'])) {
+							$_SESSION['cart'] = [];
+						}
 						
 						header("location:index.php");
 						exit;

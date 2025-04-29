@@ -4,14 +4,32 @@ session_start();
 require "../config.php";
 require "../common.php";
 
-$product = false; 
+if (isset($_POST["add"]) && isset($_POST['product_id'])) {
+    $product_id_to_add = $_POST['product_id']; //gets id from current product page
 
+
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+
+    //checks if item is already in cart
+    if (isset($_SESSION['cart'][$product_id_to_add])) {
+        //adds to quantity
+        $_SESSION['cart'][$product_id_to_add]++;
+    } else {
+        //add 1 new item
+        $_SESSION['cart'][$product_id_to_add] = 1;
+    }
+
+    header("location: products.php");
+    exit;
+}
+
+$product = false; 
 if (isset($_GET['id'])) {
     try {
         $connection = new PDO($dsn, $username, $password, $options);
         $product_id = $_GET['id'];
-
-       
         $sql = "SELECT * FROM product WHERE product_id = :product_id";
         $statement = $connection->prepare($sql);
         $statement->bindValue(':product_id', $product_id);
@@ -24,7 +42,6 @@ if (isset($_GET['id'])) {
         error_log("Database Error: " . $error->getMessage());
     }
 }
-
 
 ?>
 
@@ -39,6 +56,7 @@ if (isset($_GET['id'])) {
         <a href="products.php"><button class="btn-primary">Back to Products</button></a>
 
         <form method="post">
+        <input type="hidden" name="product_id" value="<?php echo escape($product["product_id"]); ?>">
         <input class="btn-primary" type="submit" name="add" value="Add to Cart">
         </form>
 
@@ -48,22 +66,5 @@ if (isset($_GET['id'])) {
     <?php endif; ?>
 </div>
 
-<?php
-    require "../scripts/Cart.php";
-    $cart = new Cart();
-
-    if(isset($_POST["add"])){        
-        if($_SESSION["Item1"] == -1){$_SESSION["Item1"] = $product_id;}
-        else if($_SESSION["Item2"] == -1){$_SESSION["Item2"] = $product_id;}
-        else if($_SESSION["Item3"] == -1){$_SESSION["Item3"] = $product_id;}
-        else if($_SESSION["Item4"] == -1){$_SESSION["Item4"] = $product_id;}
-        else if($_SESSION["Item5"] == -1){$_SESSION["Item5"] = $product_id;}
-
-        header("location:products.php");
-		exit;
-    }
-
-
-?>
 
 <?php include "templates/footer.php"; ?>
