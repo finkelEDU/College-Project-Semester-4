@@ -39,6 +39,33 @@
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
+	}else if(isset($_POST["create_product"])){
+		require "../common.php";
+
+		try{
+			require_once "../src/DBconnect.php";
+
+			$new_product = array(
+				"name"			=>		escape($_POST["name"]),
+				"description"			=>		escape($_POST["description"]),
+				"cost"			=>		escape($_POST["cost"]),
+				"image"			=>		escape($_POST["image"])
+			);
+
+
+			$sql = sprintf("INSERT INTO %s (%s) values (%s)",
+                            "Product", 
+                            implode(", ", array_map(function($key) { return "product_" . $key; }, array_keys($new_product))), 
+                            ":" . implode(", :", array_keys($new_product))
+                           ); 
+							
+			$statement = $connection->prepare($sql);
+			$statement->execute($new_product);
+
+			echo "Product created!!";
+		}catch(PDOException $error){
+			echo $sql . "<br>" . $error->getMessage();
+		}
 	}
 ?>
 
@@ -153,8 +180,17 @@
 	<input type="submit" name="submit_all_orders" value="Show All Orders">
 </form>
 
-<p>
-	A function to obtain a json file of data should also be created here.
-</p>
+<h2>Create Product</h2>
+	<form method="post">
+		<label for="name">Name: </label>
+		<input type="text" name="name" id="name" required>
+		<label for="description">Description: </label>
+		<input type="text" name="description" id="description" required>
+		<label for="cost"> Cost: </label>
+		<input type="text" name="cost" id="cost" required>
+		<label for="image">Image Path: </label>
+		<input type="text" name="image" id="image"><br>
+		<input type="submit" name="create_product" value="Create Product">
+	</form>
 	
 <?php include "templates/footer.php"; ?>
