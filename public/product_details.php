@@ -3,25 +3,12 @@ session_start();
 
 require "../config.php";
 require "../common.php";
+require "../scripts/Cart.php";
+$cart = new Cart($connection, $_SESSION);
 
-if (isset($_POST["add"]) && isset($_POST['product_id'])) {
-    $product_id_to_add = $_POST['product_id']; //gets id from current product page
-
-
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-
-    //checks if item is already in cart
-    if (isset($_SESSION['cart'][$product_id_to_add])) {
-        //adds to quantity
-        $_SESSION['cart'][$product_id_to_add]++;
-    } else {
-        //add 1 new item
-        $_SESSION['cart'][$product_id_to_add] = 1;
-    }
-
-    header("location: products.php");
+if (isset($_POST['add'], $_POST['product_id'])) {
+    $cart->add((int)$_POST['product_id']);
+    header("Location: shopping.php");
     exit;
 }
 
