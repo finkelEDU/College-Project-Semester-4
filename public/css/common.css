@@ -120,6 +120,15 @@ nav a.active {
     margin-top: 25px;
     color: var(--text-light);
 }
+.website-description,
+.platforms {
+  border: 1px solid var(--border-light); 
+  padding: 15px;        
+  margin-bottom: 20px;  
+  background-color: var(--border-light);
+  border-radius: 5px;
+  
+}
 
 .platform-list li {
     display: flex;

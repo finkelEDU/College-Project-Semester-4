@@ -2,10 +2,13 @@
 
 
 <div class="index-content"> 
+    <div class="website-description">
     <p class="intro-text">Welcome to the Two Guys Store! Here, you can find games, consoles and accessories to your liking!</p>
+    </div>
+    
 
-    <p>Here, we have products available for the following:</p> 
-
+    <div class="platforms">
+    <p>Here, we have products available for the following platforms:</p> 
     <ul class="platform-list"> 
         <?php
         $products = array(
@@ -23,8 +26,8 @@
         }
         ?>
     </ul>
-
-    <p class="cta-text">Are you ready to explore? You can browse the catalog, but you must be logged in to buy!</p>
+    </div>
+    <p class="cta-text">Make sure to check out our latest offerings on the products page!</p>
 </div>
 
 <?php include "templates/footer.php" ?>
