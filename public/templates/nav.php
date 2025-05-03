@@ -1,17 +1,17 @@
 <?php
-    $currentPage = basename($_SERVER['PHP_SELF']);
+    $currentPageParam = $_GET['page'] ?? 'home';
 ?>
 
 <nav>
-    <a href="index.php" class="<?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">HOME</a>
-    <a href="products.php" class="<?php echo ($currentPage == 'products.php') ? 'active' : ''; ?>">PRODUCTS</a>
+    <a href="index.php?page=home" class="<?php echo ($currentPageParam == 'home') ? 'active' : ''; ?>">HOME</a>
+    <a href="index.php?page=products" class="<?php echo ($currentPageParam == 'products') ? 'active' : ''; ?>">PRODUCTS</a>
     <?php if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])): ?>
         <?php // user logged in show: ?>
-        <a href="logout.php">LOG OUT</a>
-        <a href="shopping.php">CART</a> 
+        <a href="index.php?page=logout">LOG OUT</a>
+        <a href="index.php?page=shopping">CART</a> 
     <?php else: ?>
         <?php // user logged out show: ?>
-        <a href="login.php" class="<?php echo ($currentPage == 'login.php') ? 'active' : ''; ?>">LOGIN</a>
-        <a href="signup.php" class="<?php echo ($currentPage == 'signup.php') ? 'active' : ''; ?>">SIGN UP</a>
+        <a href="index.php?page=login" class="<?php echo ($currentPageParam == 'login') ? 'active' : ''; ?>">LOGIN</a>
+        <a href="index.php?page=signup" class="<?php echo ($currentPageParam == 'signup') ? 'active' : ''; ?>">SIGN UP</a>
     <?php endif; ?>
-</nav>
+</nav> 

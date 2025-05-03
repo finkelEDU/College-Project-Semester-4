@@ -13,6 +13,22 @@ switch ($page) {
         $controller->index(); 
         break;
 
+    case 'login': 
+        require_once '../controllers/Login_Controller.php';
+        $controller = new LoginController();
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                 $controller->handleLogin(); 
+            } else {
+                 $controller->showLoginForm(); 
+            }
+            break;
+
+    case 'logout': 
+         require_once '../controllers/Login_Controller.php'; 
+        $controller = new LoginController();
+                $controller->logout();
+                break;
+
 
     default:
         echo "Page not found.";

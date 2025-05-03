@@ -1,6 +1,4 @@
 <?php
-	session_start();
-
 	if($_SESSION["Admin"] == false){
 		header("location:login.php");
 		exit;
