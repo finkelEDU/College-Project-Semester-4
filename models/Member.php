@@ -5,7 +5,6 @@ class Member{
 	public $memberUsername;
 	public $memberPassword;
 	public $memberEmail;
-	public $memberDOB;
 
 	//CONSTRUCTOR
 	public function __construct($memberID, $memberUsername, $memberPassword, $memberEmail, $memberDOB){
@@ -13,7 +12,6 @@ class Member{
 		$this->memberUsername = $memberUsername;
 		$this->memberPassword = $memberPassword;
 		$this->memberEmail = $memberEmail;
-		$this->memberDOB = $memberDOB;
 	}
 	
 	//SETTERS
@@ -33,10 +31,6 @@ class Member{
 		$this->memberEmail = $memberEmail;
 	}
 	
-	public function setMemberDOB($memberDOB){
-		$this->memberDOB = $memberDOB;
-	}
-	
 	//GETTERS
 	public function getMemberID(){
 		return $this->memberID;
@@ -54,10 +48,6 @@ class Member{
 		return $this->memberEmail;
 	}
 	
-	public function getMemberDOB(){
-		return $this->memberDOB;
-	}
-	
 	//DISPLAY DETAILS
 	public function displayMember(){
 		echo "<br>MEMBER";
@@ -65,7 +55,49 @@ class Member{
 		echo "<br>Username: " . $this->getMemberUsername();
 		echo "<br>Password: " . $this->getMemberPassword();
 		echo "<br>Email: " . $this->getMemberEmail();
-		echo "<br>Date of Birth: " . $this->getMemberDOB();
+	}
+
+	public static function authenticate(PDO $connection, $username, $password) {
+        $sql = "SELECT * FROM Member WHERE member_username = :username";
+        $statement = $connection->prepare($sql);
+        $statement->bindParam(":username", $username); 
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+		return $user && $user["member_password"] == $password ? $user : false;
+    }
+	
+	//checks username against db
+	public static function usernameExists(PDO $connection, $username) {
+        $sql = "SELECT 1 FROM Member WHERE member_username = :username LIMIT 1";
+        $statement = $connection->prepare($sql);
+        $statement->bindParam(':username', $username);
+        $statement->execute();
+        return $statement->fetchColumn() !== false;
+    }
+
+	public static function createMember(PDO $connection, $username, $password, $email,) {
+		$dataToInsert = [
+			'username' => $username,
+			'password' => $password,
+			'email'    => $email,
+			'type'     => 'Member',
+			'dob'      => null
+		];
+	
+		$columnNames = [];
+		$placeholders = [];
+		foreach (array_keys($dataToInsert) as $key) {
+			$columnNames[] = "member_" . $key;
+			$placeholders[] = ":" . $key;
+		}
+	
+		$sql = sprintf(
+			"INSERT INTO %s (%s) VALUES (%s)",
+			"Member",
+			implode(", ", $columnNames),
+			implode(", ", $placeholders)
+		);
 	}
 }
 ?>

@@ -1,4 +1,5 @@
 <?php
+require_once '../models/Member.php';
 
 class LoginController {
 
@@ -14,33 +15,21 @@ class LoginController {
 
         try {
             global $dsn, $username, $password, $options; 
+            
             $connection = new PDO($dsn, $username, $password, $options);
 
-                $sql = "SELECT member_username, member_password, member_type FROM Member WHERE member_username = :inputUsername";
-                $statement = $connection->prepare($sql);
+              
                 $inputUser = $_POST["inputUsername"];
                 $inputPass = $_POST["inputPassword"]; 
-                $statement->bindParam(":inputUsername", $inputUser);
-                $statement->execute();
+          
+                $user = Member::authenticate($connection, $inputUser, $inputPass);
 
-            
-            $user = $statement->fetch(PDO::FETCH_ASSOC);
+                    $_SESSION["Username"] = $user["member_username"];
+                    $_SESSION["UserID"] = $user["member_id"];
+                    $_SESSION["Admin"] = ($user["member_type"] === "Admin");
+                    header("Location: index.php?page=home");
+                    exit;
 
-            if ($user && (escape($inputPass) == $user["member_password"])) {
-               
-                $_SESSION["Username"] = $user["member_username"];
-                $_SESSION["Active"] = true;
-                $_SESSION["Admin"] = ($user["member_type"] === "Admin");
-
-                if (!isset($_SESSION['cart'])) {
-                    $_SESSION['cart'] = [];
-                }
-
-                header("Location: index.php?page=home");
-                exit;
-            } else {
-                $this->showLoginForm("Uh Oh! incorrect username or password.");
-            }
 
         } catch(PDOException $error) {
             $this->showLoginForm("error!");

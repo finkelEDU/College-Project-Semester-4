@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS Member(
 	member_username VARCHAR(30) NOT NULL,
 	member_password VARCHAR(255) NOT NULL,
 	member_email VARCHAR(80) NOT NULL,
-	member_dob DATE NOT NULL,
 	member_type VARCHAR(30) NOT NULL
 );
 
@@ -28,9 +27,9 @@ CREATE TABLE IF NOT EXISTS Orders(
 );
 
 /*Insert Admins and a test user*/
-INSERT INTO Member(member_username, member_password, member_email, member_dob, member_type) VALUES ("fintan33", "12345", "fin33@fin.com", "1991-11-07", "Admin");
-INSERT INTO Member(member_username, member_password, member_email, member_dob, member_type) VALUES ("oscar22", "67890", "oscar22@oscar.com", "2000-05-22", "Admin");
-INSERT INTO Member(member_username, member_password, member_email, member_dob, member_type) VALUES ("fortniteGAMER33", "Iluvfortnite", "fortniteGAMER@fin.com", "2010-07-30", "Member");
+INSERT INTO Member(member_username, member_password, member_email, member_type) VALUES ("fintan33", "12345", "fin33@fin.com", "Admin");
+INSERT INTO Member(member_username, member_password, member_email, member_type) VALUES ("oscar22", "67890", "oscar22@oscar.com", "Admin");
+INSERT INTO Member(member_username, member_password, member_email, member_type) VALUES ("fortniteGAMER33", "Iluvfortnite", "fortniteGAMER@fin.com", "Member");
 
 /*Insert the Products*/
 INSERT INTO Product(product_name, product_description, product_cost, product_image) VALUES ("Playstation 5", "Newest Playstation! Buy now and join the newest games!", 549.99, "images/ps5.png");

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../common.php'; 
 require_once '../config.php'; 
 
@@ -28,6 +28,16 @@ switch ($page) {
         $controller = new LoginController();
                 $controller->logout();
                 break;
+
+     case 'signup': 
+        require_once '../controllers/Signup_Controller.php';
+        $controller = new SignupController();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->handleSignup(); 
+        } else {
+            $controller->showSignupForm(); 
+        }
+        break;
 
 
     default:
