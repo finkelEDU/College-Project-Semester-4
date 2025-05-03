@@ -8,7 +8,7 @@
     <?php if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])): ?>
         <?php // user logged in show: ?>
         <a href="index.php?page=logout">LOG OUT</a>
-        <a href="index.php?page=shopping">CART</a> 
+        <a href="index.php?page=shopping_cart">CART</a> 
     <?php else: ?>
         <?php // user logged out show: ?>
         <a href="index.php?page=login" class="<?php echo ($currentPageParam == 'login') ? 'active' : ''; ?>">LOGIN</a>

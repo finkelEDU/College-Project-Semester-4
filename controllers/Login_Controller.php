@@ -24,12 +24,13 @@ class LoginController {
           
                 $user = Member::authenticate($connection, $inputUser, $inputPass);
 
+                if ($user) {
                     $_SESSION["Username"] = $user["member_username"];
                     $_SESSION["UserID"] = $user["member_id"];
                     $_SESSION["Admin"] = ($user["member_type"] === "Admin");
                     header("Location: index.php?page=home");
                     exit;
-
+                }
 
         } catch(PDOException $error) {
             $this->showLoginForm("error!");

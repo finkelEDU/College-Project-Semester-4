@@ -3,7 +3,8 @@
 
 <div class="index-content"> 
     <div class="website-description">
-    <p class="intro-text">Welcome to the Two Guys Store! Here, you can find games, consoles and accessories to your liking!</p>
+    <p class="intro-text">Welcome to the Two Guys Store, <br>
+    Your one stop shop for all the lastest systems and accesories!</p>
     </div>
     
 

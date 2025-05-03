@@ -39,6 +39,24 @@ switch ($page) {
         }
         break;
 
+    case 'products':
+        require_once '../controllers/Product_Controller.php';
+        $controller = new ProductController();
+        $controller->index();
+        break;
+    
+    case 'product_details':
+        require_once '../controllers/Product_Controller.php';
+        $controller = new ProductController();
+        $controller->details();
+        break;
+        
+    case 'shopping_cart':
+        require_once '../controllers/Product_Controller.php';
+        $controller = new ProductController();
+        $controller->cart();
+        break;
+
 
     default:
         echo "Page not found.";

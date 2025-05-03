@@ -98,7 +98,6 @@
 		<td><?php echo escape($row["member_username"]); ?></td>
 		<td><?php echo escape($row["member_password"]); ?></td>
 		<td><?php echo escape($row["member_email"]); ?></td>
-		<td><?php echo escape($row["member_dob"]); ?></td>
 		<td><?php echo escape($row["member_type"]); ?></td>
 	</tr>
 	

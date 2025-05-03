@@ -6,55 +6,14 @@ class Member{
 	public $memberPassword;
 	public $memberEmail;
 
-	//CONSTRUCTOR
-	public function __construct($memberID, $memberUsername, $memberPassword, $memberEmail, $memberDOB){
-		$this->memberID = $memberID;
-		$this->memberUsername = $memberUsername;
-		$this->memberPassword = $memberPassword;
-		$this->memberEmail = $memberEmail;
-	}
-	
-	//SETTERS
-	public function setMemberID($memberID){
-		$this->memberID = $memberID;
-	}
-	
-	public function setMemberUsername($memberUsername){
-		$this->memberUsername = $memberUsername;
-	}
-	
-	public function setMemberPassword($memberPassword){
-		$this->memberPassword = $memberPassword;
-	}
-	
-	public function setMemberEmail($memberEmail){
-		$this->memberEmail = $memberEmail;
-	}
-	
-	//GETTERS
-	public function getMemberID(){
-		return $this->memberID;
-	}
-	
-	public function getMemberUsername(){
-		return $this->memberUsername;
-	}
-	
-	public function getMemberPassword(){
-		return $this->memberPassword;
-	}
-	
-	public function getMemberEmail(){
-		return $this->memberEmail;
-	}
 	
 	//DISPLAY DETAILS
 	public function displayMember(){
 		echo "<br>MEMBER";
-		echo "<br>ID: " . $this->getMemberID();
-		echo "<br>Username: " . $this->getMemberUsername();
-		echo "<br>Password: " . $this->getMemberPassword();
-		echo "<br>Email: " . $this->getMemberEmail();
+		echo "<br>ID: " . $this->memberID;
+		echo "<br>Username: " . $this->memberUsername();
+		echo "<br>Password: " . $this->memberPassword();
+		echo "<br>Email: " . $this->memberEmail();
 	}
 
 	public static function authenticate(PDO $connection, $username, $password) {
@@ -98,6 +57,9 @@ class Member{
 			implode(", ", $columnNames),
 			implode(", ", $placeholders)
 		);
+		$statement = $connection->prepare($sql);
+		$success = $statement->execute($dataToInsert);
+		return $success;
 	}
 }
 ?>
