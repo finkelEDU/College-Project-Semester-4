@@ -3,7 +3,13 @@ session_start();
 require_once '../common.php'; 
 require_once '../config.php'; 
 
-//router
+try {
+    $connection = new PDO($dsn, $username, $password, $options);
+} catch (PDOException $e) {
+    exit("DB error has occurred: " . $e->getMessage());
+}
+
+//page router
 $page = $_GET['page'] ?? 'home'; 
 
 switch ($page) {
@@ -13,9 +19,10 @@ switch ($page) {
         $controller->index(); 
         break;
 
+
     case 'login': 
         require_once '../controllers/Login_Controller.php';
-        $controller = new LoginController();
+        $controller = new LoginController($connection);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                  $controller->handleLogin(); 
             } else {
@@ -23,15 +30,17 @@ switch ($page) {
             }
             break;
 
+
     case 'logout': 
          require_once '../controllers/Login_Controller.php'; 
-        $controller = new LoginController();
+         $controller = new LoginController($connection);
                 $controller->logout();
                 break;
 
+
      case 'signup': 
         require_once '../controllers/Signup_Controller.php';
-        $controller = new SignupController();
+        $controller = new SignupController($connection);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $controller->handleSignup(); 
         } else {
@@ -39,21 +48,24 @@ switch ($page) {
         }
         break;
 
+
     case 'products':
         require_once '../controllers/Product_Controller.php';
-        $controller = new ProductController();
+        $controller = new ProductController($connection);
         $controller->index();
         break;
     
+
     case 'product_details':
         require_once '../controllers/Product_Controller.php';
-        $controller = new ProductController();
+        $controller = new ProductController($connection);
         $controller->details();
         break;
         
+
     case 'shopping_cart':
         require_once '../controllers/Product_Controller.php';
-        $controller = new ProductController();
+        $controller = new ProductController($connection);
         $controller->cart();
         break;
 

@@ -6,7 +6,6 @@ class Member{
 	public $memberPassword;
 	public $memberEmail;
 
-	
 	//DISPLAY DETAILS
 	public function displayMember(){
 		echo "<br>MEMBER";
@@ -50,16 +49,5 @@ class Member{
 			$columnNames[] = "member_" . $key;
 			$placeholders[] = ":" . $key;
 		}
-	
-		$sql = sprintf(
-			"INSERT INTO %s (%s) VALUES (%s)",
-			"Member",
-			implode(", ", $columnNames),
-			implode(", ", $placeholders)
-		);
-		$statement = $connection->prepare($sql);
-		$success = $statement->execute($dataToInsert);
-		return $success;
 	}
 }
-?>

@@ -15,57 +15,46 @@ class Product{
 		$this->productCost = $productCost;
 		$this->productImage = $productImage;
 	}
-	
-	//SETTERS
-	public function setProductID($productID){
-		$this->productID = $productID;
-	}
-	
-	public function setProductName($productName){
-		$this->productName = $productName;
-	}
-	
-	public function setProductDescription($productDescription){
-		$this->productDescription = $productDescription;
-	}
-	
-	public function setProductCost($productCost){
-		$this->productCost = $productCost;
-	}
-	
-	public function setProductImage($productImage){
-		$this->productImage = $productImage;
-	}
-	
-	//GETTERS
-	public function getProductID(){
-		return $this->productID;
-	}
-	
-	public function getProductName(){
-		return $this->productName;
-	}
-	
-	public function getProductDescription(){
-		return $this->productDescription;
-	}
-	
-	public function getProductCost(){
-		return $this->productCost;
-	}
-	
-	public function getProductImage(){
-		return $this->productImage;
-	}
-	
-	//DISPLAY DETAILS
-	public function displayProduct(){
-		echo "<br>PRODUCT";
-		echo "<br>ID: " . $this->getProductID();
-		echo "<br>Name: " . $this->getProductName();
-		echo "<br>Description: " . $this->getProductDescription();
-		echo "<br>Cost: " . $this->getProductCost();
-		echo "<br>Image: " . $this.getProductImage();
-	}
+
+	//collect all products as product objects
+	public static function getAllProducts(PDO $connection): array {
+        $sql = "SELECT * FROM Product";
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $products = [];
+        foreach ($results as $row) {
+    $products[] = new Product(
+		$row['product_id'],
+		$row['product_name'],
+		$row['product_description'],
+		$row['product_cost'],
+		$row['product_image']
+            );
+        }
+        return $products;
+    }
+
+
+	//get single product by id
+	public static function getProductById(PDO $connection, int $id): ?Product {
+        $sql = "SELECT * FROM Product WHERE product_id = :id";
+        $statement = $connection->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+	return new Product(
+		$row['product_id'],
+		$row['product_name'],
+		$row['product_description'],
+		$row['product_cost'],
+		$row['product_image']
+            );
+        }
+        return null;
+    }
+
 }
 ?>
