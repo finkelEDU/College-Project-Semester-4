@@ -1,54 +1,61 @@
 <?php
-class Product{
-	//ATTRIBUTES
-	public $productID;
-	public $productName;
-	public $productDescription;
-	public $productCost;
-	public $productImage;
+class Product {
+    //ATTRIBUTES
+    public $productID;
+    public $productName;
+    public $productDescription;
+    public $productCost;
+    public $productImage;
 
-	//CONSTRUCTOR
-	public function __construct($productID,$productName,$productDescription,$productCost,$productImage){
-		$this->productID = $productID;
-		$this->productName = $productName;
-		$this->productDescription = $productDescription;
-		$this->productCost = $productCost;
-		$this->productImage = $productImage;
-	}
 
-	//collect all products as product objects
-	public static function getAllProducts(PDO $connection) {
+    private $connection;
+
+	//create and store connection
+    public function __construct(PDO $connection , $productID, $productName, $productDescription, $productCost , $productImage ) {
+        $this->connection = $connection; 
+
+        $this->productID = $productID;
+        $this->productName = $productName;
+        $this->productDescription = $productDescription;
+        $this->productCost = $productCost;
+        $this->productImage = $productImage;
+    }
+
+    //fetch all products
+    public function getAllProducts() {
         $sql = "SELECT * FROM Product";
-        $statement = $connection->prepare($sql);
+        $statement = $this->connection->prepare($sql);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         $products = [];
         foreach ($results as $row) {
-    $products[] = new Product(
-		$row['product_id'],
-		$row['product_name'],
-		$row['product_description'],
-		$row['product_cost'],
-		$row['product_image']
+            $products[] = new Product(
+                $this->connection,
+                $row['product_id'],
+                $row['product_name'],
+                $row['product_description'],
+                $row['product_cost'],
+                $row['product_image']
             );
         }
         return $products;
     }
 
-	//get single product by id
-	public static function getProductById(PDO $connection,  $id){
+    //get single product by id 
+    public function getProductById($id) {
         $sql = "SELECT * FROM Product WHERE product_id = :id";
-        $statement = $connection->prepare($sql);
+        $statement = $this->connection->prepare($sql);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-	return new Product(
-		$row['product_id'],
-		$row['product_name'],
-		$row['product_description'],
-		$row['product_cost'],
-		$row['product_image']
+            return new Product(
+                $this->connection, 
+                $row['product_id'],
+                $row['product_name'],
+                $row['product_description'],
+                $row['product_cost'],
+                $row['product_image']
             );
         }
         return null;

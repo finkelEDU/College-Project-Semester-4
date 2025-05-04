@@ -3,13 +3,15 @@ require_once '../models/Product.php';
 class ProductController {
     
     private $dbConnection;
+    private $productModel;
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
+        $this->productModel = new Product($this->dbConnection); 
     }
 
     //displays all products
     public function index() {
-        $products = Product::getAllProducts($this->dbConnection); 
+        $products = $this->productModel->getAllProducts(); 
         include '../views/products_view.php';
     }
     
@@ -18,7 +20,7 @@ class ProductController {
         $product = null;
         if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $product = Product::getProductById($this->dbConnection, $id);
+                $product = $this->productModel->getProductById($id); 
     }
         include '../views/product_details_view.php';
 }   

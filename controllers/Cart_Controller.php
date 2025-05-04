@@ -9,6 +9,7 @@ class CartController {
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
         $this->cart = new Cart(); 
+        $this->productModel = new Product($this->dbConnection); 
     }
 
     public function index() {
@@ -19,7 +20,7 @@ class CartController {
 
         //fetch all prod details for each item in cart
         foreach ($productIds as $id) {
-            $product = Product::getProductById($this->dbConnection, $id);
+            $product = $this->productModel->getProductById($id); 
             if ($product) {
                 $products_by_id[$id] = [
                     'product_id' => $product->productID,
@@ -57,7 +58,7 @@ class CartController {
 
                 //if order successful, clear cart and redirect
                 if ($orderSuccess) {
-                    $_SESSION['cart'] = [];
+                    $this->cart->clearCart(); 
                     header("Location: index.php?page=products&order=success");
                     exit;
                 } else {
@@ -72,7 +73,6 @@ class CartController {
             'products_by_id' => $products_by_id,
             'total_cost' => $total_cost
         ];
-        extract($viewData); //get all variables to use directly in view
         include '../views/shopping_view.php';
 
     }
