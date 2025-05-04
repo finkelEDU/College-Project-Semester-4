@@ -74,6 +74,13 @@ switch ($page) {
         $controller = new CartController($connection);
         $controller->add();
         break;
+		
+	case 'admin':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->index();
+		
+		break;
 
     default:
         echo "Page not found.";
