@@ -1,29 +1,4 @@
-<?php
-	
-	//$controller = new AdminController();
-	
-	
-	//Creation Functions to use
-	if(isset($_POST["create_product"])){
-		$controller->createProduct();
-	}else if(isset($_POST["create_member"])){
-		$controller->createMember();
-	}else if(isset($_POST["create_order"])){
-		$controller->createOrder();
-	}
-?>
-
 <?php include "templates/header_special.php"; ?>
-
-<?php
-	if(isset($_POST["submit_all_members"])){
-		//$controller->readMembers();
-	}else if(isset($_POST["submit_all_products"])){
-		$controller->readProducts();
-	}else if(isset($_POST["submit_all_orders"])){
-		$controller->readOrders();
-	}
-?>
 
 
 <form method="post" method="GET">

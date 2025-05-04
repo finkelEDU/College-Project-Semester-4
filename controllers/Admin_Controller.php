@@ -13,12 +13,8 @@ class AdminController{
     }
 
 	//Member Functions
-	public function createMember(){
-		require "../common.php";
-
+	public function createMember($connection){
 		try{
-			require_once "../src/DBconnect.php";
-
 			$new_member = array(
 				"username"		=>		escape($_POST["username"]),
 				"password"		=>		escape($_POST["password"]),
@@ -88,10 +84,8 @@ class AdminController{
 	}//End of ReadMembers function
 	
 	
-	public function updateMember(){
+	public function updateMember($connection){
 		try{
-			require_once "../src/DBconnect.php";
-			
 			$member = [
 				"member_id"			=> escape($_POST["member_id"]),
 				"member_username" 	=> escape($_POST["member_username"]),
@@ -117,10 +111,8 @@ class AdminController{
 		}
 	}
 	
-	public function deleteMember(){
+	public function deleteMember($connection){
 		try{
-			require_once "../src/DBconnect.php";
-			
 			$id = $_GET["id"];
 			$sql = "DELETE FROM Member WHERE member_id = :id";
 			
@@ -133,11 +125,9 @@ class AdminController{
 	}
 	
 	//Product Functions
-	public function createProduct(){
-		require "../common.php";
-
+	public function createProduct($connection){
 		try{
-			require_once "../src/DBconnect.php";
+			
 
 			$new_product = array(
 				"name"			=>		escape($_POST["name"]),
@@ -161,11 +151,8 @@ class AdminController{
 		}
 	}
 	
-	public function readProducts(){
+	public function readProducts($connection){
 		try{
-			require "../common.php";
-			require_once "../src/DBconnect.php";
-			
 			$sql = "SELECT * FROM Product";
 			
 			$statement = $connection->prepare($sql);
@@ -210,10 +197,8 @@ class AdminController{
 		}
 	}
 	
-	public function updateProduct(){
+	public function updateProduct($connection){
 		try{
-			require_once "../src/DBconnect.php";
-			
 			$product = [
 				"product_id"			=> escape($_POST["product_id"]),
 				"product_name"			=> escape($_POST["product_name"]),
@@ -239,10 +224,8 @@ class AdminController{
 		}
 	}
 	
-	public function deleteProduct(){
+	public function deleteProduct($connection){
 		try{
-			require_once "../src/DBconnect.php";
-			
 			$id = $_GET["id"];
 			$sql = "DELETE FROM Product WHERE product_id = :id";
 			
@@ -255,12 +238,8 @@ class AdminController{
 	}
 	
 	//Orders Functions
-	public function createOrder(){
-		require "../common.php";
-
-		try{
-			require_once "../src/DBconnect.php";
-						   
+	public function createOrder($connection){
+		try{			   
 			$sql = "INSERT INTO ORDERS (orders_date, product_name, member_id) VALUES (:orders_date, :product_name, :member_id)";
 							
 			$statement = $connection->prepare($sql);
@@ -276,11 +255,8 @@ class AdminController{
 		}
 	}
 	
-	public function readOrders(){
+	public function readOrders($connection){
 		try{
-			require "../common.php";
-			require_once "../src/DBconnect.php";
-			
 			$sql = "SELECT * FROM Orders";
 			
 			$statement = $connection->prepare($sql);
@@ -323,12 +299,10 @@ class AdminController{
 		}
 	}
 	
-	public function updateOrder(){
+	public function updateOrder($connection){
 		try{
-			require_once "../src/DBconnect.php";
-			
 			$orders = [
-				"orders_id"			=> escape($_POST["orders_id"]),
+				"orders_id"		=> escape($_POST["orders_id"]),
 				"orders_date" 	=> escape($_POST["orders_date"]),
 				"product_name"	=> escape($_POST["product_name"]),
 				"member_id"		=> escape($_POST["member_id"])
@@ -350,10 +324,8 @@ class AdminController{
 		}
 	}
 	
-	public function deleteOrder(){
+	public function deleteOrder($connection){
 		try{
-			require_once "../src/DBconnect.php";
-			
 			$id = $_GET["id"];
 			$sql = "DELETE FROM Orders WHERE orders_id = :id";
 			
