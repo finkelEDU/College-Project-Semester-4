@@ -43,11 +43,12 @@ class CartController {
             if (isset($_SESSION["UserID"]) && !empty($cartItems)) {
                 $memberId = $_SESSION["UserID"];
                 $orderSuccess = true;
+                $currentDateTime = date('Y-m-d');
 
                 foreach ($cartItems as $productId => $quantity) {
                     if (isset($products_by_id[$productId])) {
                         $productName = $products_by_id[$productId]['product_name'];
-                        if (!Orders::createOrder($this->dbConnection, $memberId, $productName)) {
+                        if (!Orders::createOrder($this->dbConnection, $memberId, $productName, $currentDateTime)) { 
                             $orderSuccess = false;
                             break;
                         }

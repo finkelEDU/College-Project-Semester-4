@@ -1,9 +1,10 @@
 <?php
 class Orders{	
-    // creates an order with member id and product name
-	public static function createOrder(PDO $connection, int $memberId, string $productName): bool {
-        $sql = "INSERT INTO Orders (orders_date, product_name, member_id) VALUES (NOW(), :product_name, :member_id)";
+    // creates an order with member id, product name
+    public static function createOrder(PDO $connection, int $memberId, string $productName, string $orderDate): bool {
+        $sql = "INSERT INTO Orders (orders_date, product_name, member_id) VALUES (:orders_date, :product_name, :member_id)";
             $statement = $connection->prepare($sql);
+            $statement->bindParam(":orders_date", $orderDate);
             $statement->bindParam(":product_name", $productName);
             $statement->bindParam(":member_id", $memberId);
             return $statement->execute();
