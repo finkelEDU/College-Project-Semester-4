@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS two_guys_db;
-
+DROP DATABASE IF EXISTS two_guys_db;
+CREATE DATABASE two_guys_db;
 use two_guys_db;
 
 CREATE TABLE IF NOT EXISTS Member(

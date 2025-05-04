@@ -18,7 +18,7 @@ class LoginController {
             return;
         }
 
-        try {
+        
                 $inputUser = $_POST["inputUsername"];
                 $inputPass = $_POST["inputPassword"]; 
           
@@ -28,13 +28,11 @@ class LoginController {
                     $_SESSION["Username"] = $user["member_username"];
                     $_SESSION["UserID"] = $user["member_id"];
                     $_SESSION["Admin"] = ($user["member_type"] === "Admin");
-                    header("Location: index.php?page=home");
+                    header("Location: index.php?page=products");
                     exit;
+                } else {
+                    $this->showLoginForm("Invalid username or password.");
                 }
-
-        } catch(PDOException $error) {
-            $this->showLoginForm("error!");
-        }
     }
   
     public function logout() {

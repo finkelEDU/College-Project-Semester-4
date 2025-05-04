@@ -35,7 +35,6 @@ class Product{
         return $products;
     }
 
-
 	//get single product by id
 	public static function getProductById(PDO $connection, int $id): ?Product {
         $sql = "SELECT * FROM Product WHERE product_id = :id";

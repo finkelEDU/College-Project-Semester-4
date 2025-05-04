@@ -5,7 +5,7 @@
     <h1>LOGIN</h1>
 
     <?php if (isset($error) && $error): ?>
-        <p style="color: red; margin-bottom: 15px;"><?php echo escape($error); ?></p>
+        <p style="color: red;  margin-bottom: 15px;"><?php echo escape($error); ?></p>
     <?php endif; ?>
     
     <form method="post" action="index.php?page=login"> 

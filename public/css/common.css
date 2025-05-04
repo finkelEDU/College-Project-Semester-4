@@ -1,7 +1,7 @@
 :root {
     --bg-dark: #1e1e1e;
     --bg-medium: #424242;
-    --text-light: #e0e0e0;
+    --text-light: #f5eddb;
     --text-medium: #b0b0b0;
     --accent: #007bff;
     --accent-hover: #0056b3;
@@ -43,13 +43,14 @@ td, th {
 
 .btn-primary {
     background-color: var(--accent);
-    color: rgb(255, 255, 255);
+    color: var(--text-light);
+    width: 130px;
+    height: 53px;
     border: none;
-    padding: 10px 15px; 
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px; 
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
     font-size: 1em;
     text-decoration: none; 
     display: inline-block; 
@@ -121,7 +122,7 @@ nav a.active {
     color: var(--text-light);
 }
 .website-description,
-.platforms {
+.platforms, #welcomeMSG{
   border: 1px solid var(--border-light); 
   padding: 15px;        
   margin-bottom: 20px;  
@@ -168,7 +169,6 @@ nav a.active {
     width: 250px;
     text-align: center;
     background-color: var(--bg-medium);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -230,8 +230,7 @@ nav a.active {
 
 .product-details-image {
     max-width: 100%;
-    height: auto;
-    max-height: 400px;
+    max-height: 370px;
     object-fit: contain;
     margin-bottom: 25px;
     border: 1px solid var(--border-light);
@@ -245,6 +244,7 @@ nav a.active {
     line-height: 1.6;
     margin-bottom: 15px;
     text-align: left;
+    font-size: 1.15em;
 }
 
 .product-details-container .price {
@@ -258,10 +258,12 @@ nav a.active {
 
 
 #welcomeMSG{
-    text-align: center;
-    margin: 20px 0;
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
     font-size: 1.4em;
     color: var(--text-light);
+    background-color: var(--bg-medium);
 }
 
 
@@ -290,8 +292,7 @@ nav a.active {
 
 .login-box input[type="text"],
 .login-box input[type="password"],
-.login-box input[type="email"], 
-.login-box input[type="date"] {  
+.login-box input[type="email"] {  
     width: 93%; 
     padding: 10px;
     margin-bottom: 10px;
@@ -308,6 +309,7 @@ nav a.active {
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
+    width: 100%;
     cursor: pointer;
     margin-top: 15px;
     transition: background-color 0.3s ease;
@@ -316,3 +318,4 @@ nav a.active {
 .login-box input[type="submit"]:hover {
     background-color: var(--accent-hover);
 }
+

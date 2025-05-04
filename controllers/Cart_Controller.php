@@ -53,6 +53,7 @@ class CartController {
         if (isset($_POST['add']) && isset($_POST['product_id_hidden'])) {
             $id = $_POST['product_id_hidden'];
             Cart::addToCart($id, 1);
+            header("Location: index.php?page=product_details&id=" . $id);
             exit;
         }
     }
