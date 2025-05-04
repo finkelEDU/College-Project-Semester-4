@@ -3,8 +3,8 @@
     --bg-medium: #424242;
     --text-light: #f5eddb;
     --text-medium: #b0b0b0;
-    --accent: #1784f8;
-    --accent-hover: #1675da;
+    --accent: #4471a1;
+    --accent-hover: #3c638d;
     --border-light: #626262;
 }
 
@@ -44,8 +44,8 @@ td, th {
 .btn-primary {
     background-color: var(--accent);
     color: var(--text-light);
-    width: 150px;
-    height: 50px;
+    width: 175px;
+    height: 45px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -109,6 +109,7 @@ nav a.active {
     margin-bottom: 15px;
 }
 
+
 .index-content .intro-text {
     text-align: center;
     font-size: 1.2em;
@@ -126,7 +127,7 @@ nav a.active {
   border: 1px solid var(--border-light); 
   padding: 15px;        
   margin-bottom: 20px;  
-  background-color: var(--border-medium);
+  background-color: var(--border-light);
   border-radius: 5px;
   
 }
@@ -156,7 +157,7 @@ nav a.active {
     gap: 20px;
     justify-content: center;
     padding: 20px;
-}
+    }
 
 .product-item {
     border: 1px solid var(--border-light);
@@ -250,7 +251,7 @@ nav a.active {
 
 
 #welcomeMSG{
-    width: 100%;
+    width: 80%;
     height: auto;
     margin: 20px auto;
     font-size: 1.4em;

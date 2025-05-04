@@ -45,6 +45,13 @@ class Orders{
 		echo "<br>Date: " . $this->getOrdersDate();
 		echo "<br>Member ID: " . $this->getMemberID();
 	}
+	public static function createOrder(PDO $connection, int $memberId, string $productName): bool {
+        $sql = "INSERT INTO Orders (orders_date, product_name, member_id) VALUES (NOW(), :product_name, :member_id)";
+            $statement = $connection->prepare($sql);
+            $statement->bindParam(":product_name", $productName);
+            $statement->bindParam(":member_id", $memberId);
+            return $statement->execute();
+    }
 }
 
 

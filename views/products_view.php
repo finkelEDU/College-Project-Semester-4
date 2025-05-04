@@ -1,6 +1,9 @@
 <?php include "templates/header.php"; ?>
 
-<div class="product-container">
+
+<?php if (isset($_GET['order']) && $_GET['order'] === 'success'): ?>
+    <p id="welcomeMSG" style="color: lightgreen; border-color: lightgreen;">Thank you for your order!</p>
+<?php else: ?>
 <p id=welcomeMSG>
 <?php if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])): ?>
     Hello, <?= escape($_SESSION["Username"]) ?>, browse our latest catalogue here!
@@ -8,6 +11,10 @@
     Welcome, browse our latest catalogue here!
  <?php endif; ?>
 </p>
+<?php endif; ?>
+
+<div class="product-container">
+
     <?php foreach ($products as $product): ?>
         <div class="product-item">
             <img class="product-details-image" src="<?= escape($product->productImage) ?>" alt="<?= escape($product->productName) ?>">

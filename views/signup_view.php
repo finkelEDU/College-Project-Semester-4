@@ -2,7 +2,7 @@
 
 <div class="login-box"> <?php //reused ?>
 <h1>WELCOME!</h1>
-    <p style="margin-bottom: 20px; color: var(--text-medium);"> 
+    <p > 
         You are very close to becoming a Two Guys Store member! Just fill in the form below to get started.
     </p>
 
