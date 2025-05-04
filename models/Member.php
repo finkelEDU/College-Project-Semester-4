@@ -1,5 +1,6 @@
 <?php
 class Member{
+	/*
 	//ATTRIBUTES
 	public $memberID;
 	public $memberUsername;
@@ -13,7 +14,9 @@ class Member{
 		echo "<br>Username: " . $this->memberUsername();
 		echo "<br>Password: " . $this->memberPassword();
 		echo "<br>Email: " . $this->memberEmail();
-	}
+	} 
+	*/
+	//USING STATIC METHODS INSTEAD
 
 	public static function authenticate(PDO $connection, $username, $password) {
         $sql = "SELECT * FROM Member WHERE member_username = :username";

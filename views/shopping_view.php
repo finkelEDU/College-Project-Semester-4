@@ -41,8 +41,16 @@
     <div style="text-align: center; margin-top: 20px;">
         <h3>Total Order Cost: €<?= escape(number_format($total_cost, 2)); ?></h3>
         <form method="post">
-            <input class="btn-primary" type="submit" name="buy" value="BUY ITEMS">
+            <input class="btn-primary" type="submit" name="buy" value="Purchase Items">
         </form>
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_SESSION["UserID"])): ?>
+    <div style="text-align: center;">
+        <a href="index.php?page=order_history">
+            <button class="btn-primary">View Order History</button>
+        </a>
     </div>
 <?php endif; ?>
 

@@ -16,7 +16,9 @@ body {
     color: var(--text-light);
 }
 
-
+h2{
+    text-align: center;
+}
 
 input[type="text"],
 input[type="password"],
@@ -47,7 +49,7 @@ td, th {
     width: 175px;
     height: 45px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     margin-top: 10px; 
     transition: background-color 0.1s ease;
@@ -231,7 +233,7 @@ nav a.active {
     object-fit: contain;
     margin-bottom: 25px;
     border: 1px solid var(--border-light);
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: var(--bg-dark);
     padding: 10px;
 }
@@ -251,9 +253,9 @@ nav a.active {
 
 
 #welcomeMSG{
-    width: 80%;
+    width: 520px;
     height: auto;
-    margin: 20px auto;
+    margin: 20px 9%;
     font-size: 1.4em;
     color: var(--text-light);
     background-color: var(--bg-medium);
@@ -310,5 +312,29 @@ nav a.active {
 
 .login-box input[type="submit"]:hover {
     background-color: var(--accent-hover);
+}
+
+
+.order-history-table {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid var(--border-light); 
+}
+
+.order-history-table th,
+.order-history-table td {
+    border: 1px solid var(--border-light);
+    padding: 8px;
+    text-align: left; 
+}
+
+.order-history-table th {
+    font-weight: bold;
+    background-color: var(--background-medium); 
+}
+
+.order-history-actions {
+    text-align: center;
+    margin-top: 20px;
 }
 

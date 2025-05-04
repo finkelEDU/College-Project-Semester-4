@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../models/Cart.php';
 //tests adding to cart.
-
+echo "Testing Cart...\n";
 $_SESSION['cart'] = [];
 
 Cart::addToCart(1, 2);

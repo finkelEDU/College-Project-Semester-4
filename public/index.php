@@ -88,6 +88,12 @@ switch ($page) {
 		
 		break;
 
+    case 'order_history':
+        require_once '../controllers/Orders_Controller.php';
+        $controller = new OrdersController($connection);
+        $controller->index();
+        break;
+
     default:
         echo "Page not found.";
         break;
