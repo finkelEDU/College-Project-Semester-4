@@ -5,7 +5,7 @@
         <h2><?= escape($product->productName) ?></h2>
         <img class="product-details-image" src="<?= escape($product->productImage) ?>" alt="<?= escape($product->productName) ?>">
         <p><?= escape($product->productDescription) ?></p> 
-        <p class="price">€<?= escape(number_format($product->productCost, 2)) ?></p>
+        <p class="price">€<?= escape($product->productCost) ?></p>
         <a href="index.php?page=products"><button class="btn-primary">Back to Products</button></a>
         <?php if (isset($_SESSION["UserID"])):?>
         <form method="post" action="index.php?page=cart_add">

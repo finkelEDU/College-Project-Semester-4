@@ -18,7 +18,7 @@
             <h3><?= escape($item["product_name"]); ?></h3>
             <p>Quantity: <?= escape($quantity); ?></p>
             <p class="price">Unit Price: €<?= escape($item_cost); ?></p>
-            <p>Subtotal: €<?= escape(number_format($subtotal, 2)); ?></p>
+            <p>Subtotal: €<?= escape($subtotal); ?></p>
             <a href="index.php?page=product_details&id=<?= escape($item["product_id"]); ?>">
                 <button class="btn-primary">View Details</button>
             </a>
@@ -40,7 +40,7 @@
 <?php //shows the total if the cart isnt empty ?>
 <?php if (!$cart_empty): ?>
     <div style="text-align: center; margin-top: 20px;">
-        <h3>Total Order Cost: €<?= escape(number_format($total_cost, 2)); ?></h3>
+        <h3>Total Order Cost: €<?= escape($total_cost); ?></h3>
         <form method="post">
             <input class="btn-primary" type="submit" name="buy" value="Purchase Items">
         </form>
