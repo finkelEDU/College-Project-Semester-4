@@ -1,0 +1,321 @@
+:root {
+    --bg-dark: #1e1e1e;
+    --bg-medium: #424242;
+    --text-light: #f5eddb;
+    --text-medium: #b0b0b0;
+    --accent: #007bff;
+    --accent-hover: #0056b3;
+    --border-light: #626262;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+    font-size: inherit; 
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text-light);
+}
+
+td, th {
+    padding: 5px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--text-light);
+    width: 130px;
+    height: 53px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; 
+    transition: background-color 0.1s ease;
+    font-size: 1em;
+    text-decoration: none; 
+    display: inline-block; 
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+nav a {
+    color: var(--text-light);
+    padding: 20px 10px;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--border-light);
+}
+
+nav a.active {
+    background-color: var(--bg-dark); 
+    color: var(--accent); 
+    font-weight: bold; 
+}
+
+#HeaderBanner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--bg-medium);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+#HeaderBanner h1 {
+    margin: 0;
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    color: var(--text-light);
+    margin-right: auto;
+}
+
+.index-content {
+    max-width: 750px;
+    margin: 30px 30px;
+    padding: 20px 30px;
+    background-color: var(--bg-medium);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+}
+.index-content p {
+    line-height: 1.6;
+    color: var(--text-medium);
+    margin-bottom: 15px;
+}
+
+.index-content .intro-text {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.index-content .cta-text {
+    font-weight: bold;
+    margin-top: 25px;
+    color: var(--text-light);
+}
+.website-description,
+.platforms, #welcomeMSG{
+  border: 1px solid var(--border-light); 
+  padding: 15px;        
+  margin-bottom: 20px;  
+  background-color: var(--border-light);
+  border-radius: 5px;
+  
+}
+
+.platform-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    padding-left: 0;
+    position: relative;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.platform-list li::before {
+    content: none;
+}
+
+.platform-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product-item {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    background-color: var(--bg-medium);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: var(--text-light);
+}
+
+.product-item h3,
+.product-details-container h2,
+.product-item .price,
+.product-details-container .price {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+}
+
+
+.product-item p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    flex-grow: 1;
+    color: var(--text-medium);
+}
+
+.product-item .price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.2em;
+    margin-top: 10px;
+    flex-grow: 0;
+}
+
+
+.product-details-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px 35px;
+    background-color: var(--bg-medium);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    text-align: center;
+}
+
+.product-details-container h2 {
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.product-details-image {
+    max-width: 100%;
+    max-height: 370px;
+    object-fit: contain;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-dark);
+    padding: 10px;
+}
+
+.product-details-container p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 1.15em;
+}
+
+.product-details-container .price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.6em;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+#welcomeMSG{
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+    font-size: 1.4em;
+    color: var(--text-light);
+    background-color: var(--bg-medium);
+}
+
+
+.login-box {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+}
+
+.login-box label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    color: var(--text-medium);
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"],
+.login-box input[type="email"] {  
+    width: 93%; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: inherit;
+}
+.login-box input[type="submit"] {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.login-box input[type="submit"]:hover {
+    background-color: var(--accent-hover);
+}
+
