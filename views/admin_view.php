@@ -1,35 +1,32 @@
 <?php
-	//include "../models/AdminControl.php";
-	//$AdminController = new AdminControl();
 	
+	//$controller = new AdminController();
+	
+	
+	//Creation Functions to use
 	if(isset($_POST["create_product"])){
-		$AdminController->createProduct();
+		$controller->createProduct();
 	}else if(isset($_POST["create_member"])){
-		$AdminController->createMember();
+		$controller->createMember();
 	}else if(isset($_POST["create_order"])){
-		$AdminController->createOrder();
-	}
-	
-	if(isset($_GET["id"])){
-		$AdminController->deleteMember();
+		$controller->createOrder();
 	}
 ?>
 
 <?php include "templates/header_special.php"; ?>
-<?php include "templates/nav.php"; ?>
 
 <?php
 	if(isset($_POST["submit_all_members"])){
-		$AdminController->readMembers();
+		//$controller->readMembers();
 	}else if(isset($_POST["submit_all_products"])){
-		$AdminController->readProducts();
+		$controller->readProducts();
 	}else if(isset($_POST["submit_all_orders"])){
-		$AdminController->readOrders();
+		$controller->readOrders();
 	}
 ?>
 
 
-<form method="post">
+<form method="post" method="GET">
 	<br>
 	<input type="submit" name="submit_all_members" value="Show All Members">
 	<input type="submit" name="submit_all_products" value="Show All Products">

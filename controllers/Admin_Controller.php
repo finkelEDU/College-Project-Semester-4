@@ -3,6 +3,7 @@
 class AdminController{	
 
 	private $dbConnection;
+	
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
     }
@@ -10,8 +11,6 @@ class AdminController{
 	public function index() {
         include '../views/admin_view.php';
     }
-
-
 
 	//Member Functions
 	public function createMember(){
@@ -42,11 +41,8 @@ class AdminController{
 		}
 	}
 	
-	public function readMembers(){
+	public function readMembers($connection){
 		try{
-			require "../common.php";
-			require_once "../src/DBconnect.php";
-			
 			$sql = "SELECT * FROM Member";
 			
 			$statement = $connection->prepare($sql);
