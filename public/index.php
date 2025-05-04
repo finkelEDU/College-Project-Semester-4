@@ -74,6 +74,12 @@ switch ($page) {
         $controller = new CartController($connection);
         $controller->add();
         break;
+
+    case 'cart_remove':
+        require_once '../controllers/Cart_Controller.php';
+        $controller = new CartController($connection);
+        $controller->remove();
+        break;
 		
 	case 'admin':
 		require_once '../controllers/Admin_Controller.php';

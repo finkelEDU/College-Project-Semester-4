@@ -23,6 +23,11 @@ class SignupController {
         $formPassword = $_POST['inputPassword']; 
         $formEmail = $_POST['inputEmail'];
 
+        if (!filter_var($formEmail, FILTER_VALIDATE_EMAIL)) {
+            $this->showSignupForm("Please enter a valid email address!");
+            return;
+        }
+
         if (strlen($formPassword) < 5) {
             $this->showSignupForm("Password must be at least 5 characters!");
             return;

@@ -57,5 +57,14 @@ class CartController {
             exit;
         }
     }
+        public function remove() {
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                Cart::removeFromCart($id);
+            }
+            header("Location: index.php?page=shopping_cart");
+            exit;
+
+    }
 }
 ?>
