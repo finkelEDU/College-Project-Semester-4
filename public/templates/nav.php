@@ -13,6 +13,9 @@
             $itemCount = Cart::getItemCount(); 
             echo  " <span>($itemCount)</span>"; 
         ?></a> 
+        <?php if (isset($_SESSION["Admin"]) && $_SESSION["Admin"] === true): ?>
+                <a href="index.php?page=admin" class="<?php echo ($currentPageParam == 'admin') ? 'active' : ''; ?>">ADMIN</a>
+            <?php endif; ?>
     <?php else: ?>
         <?php // user logged out show: ?>
         <a href="index.php?page=login" class="<?php echo ($currentPageParam == 'login') ? 'active' : ''; ?>">LOGIN</a>
