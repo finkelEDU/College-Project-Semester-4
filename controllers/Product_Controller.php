@@ -20,9 +20,10 @@ class ProductController {
         if (isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $product = Product::getProductById($this->dbConnection, $id);
-        if ($product && isset($_POST['add']))
+        if ($product && isset($_POST['add'])){
             if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
+            }
             
             if (isset($_SESSION['cart'][$id])) {
                 //adds to quantity
@@ -36,17 +37,13 @@ class ProductController {
         }
     }
         include '../views/product_details_view.php';
-    }
+}
         
     
     //temporary cart here
     public function cart() {
-        
-            global $dsn, $username, $password, $options;
-            $connection = new PDO($dsn, $username, $password, $options);
-
     $sql = "SELECT * FROM Product";
-    $statement = $connection->prepare($sql);
+    $statement = $this->dbConnection->prepare($sql);
     $statement->execute();
     $all_products_result = $statement->fetchAll(PDO::FETCH_ASSOC);
     $products_by_id = [];

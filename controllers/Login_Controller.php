@@ -3,6 +3,11 @@ require_once '../models/Member.php';
 
 class LoginController {
 
+    private $dbConnection;
+    public function __construct(PDO $connection) {
+        $this->dbConnection = $connection;
+    }
+
     public function showLoginForm($error = null) {
         include '../views/login_view.php';
     }
@@ -14,15 +19,10 @@ class LoginController {
         }
 
         try {
-            global $dsn, $username, $password, $options; 
-            
-            $connection = new PDO($dsn, $username, $password, $options);
-
-              
                 $inputUser = $_POST["inputUsername"];
                 $inputPass = $_POST["inputPassword"]; 
           
-                $user = Member::authenticate($connection, $inputUser, $inputPass);
+                $user = Member::authenticate($this->dbConnection, $inputUser, $inputPass);
 
                 if ($user) {
                     $_SESSION["Username"] = $user["member_username"];

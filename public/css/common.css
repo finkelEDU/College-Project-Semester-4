@@ -108,7 +108,6 @@ nav a.active {
     margin-bottom: 15px;
 }
 
-
 .index-content .intro-text {
     text-align: center;
     font-size: 1.2em;
@@ -153,9 +152,6 @@ nav a.active {
     vertical-align: middle;
 }
 
-.login-box {
-    width: 300px;
-}
 
 .product-container {
     display: flex;
@@ -192,14 +188,12 @@ nav a.active {
 }
 
 .product-item h3,
-.product-details-container h2 {
-    font-family: Consolas, 'Courier New', Courier, monospace;
-}
-
+.product-details-container h2,
 .product-item .price,
 .product-details-container .price {
     font-family: Consolas, 'Courier New', Courier, monospace;
 }
+
 
 .product-item p {
     margin: 5px 0;
@@ -235,9 +229,9 @@ nav a.active {
 }
 
 .product-details-image {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
-    max-height: 350px;
+    max-height: 400px;
     object-fit: contain;
     margin-bottom: 25px;
     border: 1px solid var(--border-light);

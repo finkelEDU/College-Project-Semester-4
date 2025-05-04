@@ -40,8 +40,9 @@ class Member{
 			'password' => $password,
 			'email'    => $email,
 			'type'     => 'Member',
-			'dob'      => null
 		];
+
+		
 	
 		$columnNames = [];
 		$placeholders = [];
@@ -49,5 +50,20 @@ class Member{
 			$columnNames[] = "member_" . $key;
 			$placeholders[] = ":" . $key;
 		}
+
+		$sql = sprintf(
+            "INSERT INTO Member (%s) VALUES (%s)",
+            implode(", ", $columnNames),
+            implode(", ", $placeholders)
+        );
+
+        try {
+            $statement = $connection->prepare($sql);
+            return $statement->execute($dataToInsert); 
+
+        } catch (PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return false;
+        }
 	}
 }

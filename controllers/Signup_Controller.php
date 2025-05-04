@@ -3,6 +3,11 @@ require_once '../models/Member.php';
 
 class SignupController {
 
+    private $dbConnection;
+    public function __construct(PDO $connection) {
+        $this->dbConnection = $connection;
+    }
+
     public function showSignupForm($message = null, $isError = true) {
         include '../views/signup_view.php';
     }
@@ -14,25 +19,21 @@ class SignupController {
             return;
         }
 
-        $formUsername = escape($_POST['inputUsername']);
-        $formPassword = escape($_POST['inputPassword']); 
-        $formEmail = escape($_POST['inputEmail']);
+        $formUsername = $_POST['inputUsername'];
+        $formPassword = $_POST['inputPassword']; 
+        $formEmail = $_POST['inputEmail'];
 
         try {
 
-            require_once '../config.php';
-            global $dsn, $username, $password, $options;
-            $connection = new PDO($dsn, $username, $password, $options);
-
             //check username  if exists
-            if (Member::usernameExists($connection, $formUsername)) {
+            if (Member::usernameExists($this->dbConnection, $formUsername)) {
                 $this->showSignupForm("Username taken.");
                 return;
             }
 
             // create member using the passed data
             $success = Member::createMember(
-                $connection,
+                $this->dbConnection,
                 $formUsername,
                 $formPassword,
                 $formEmail

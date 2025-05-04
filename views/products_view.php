@@ -11,7 +11,7 @@
 <div class="product-container">
     <?php foreach ($products as $product): ?>
         <div class="product-item">
-            <img src="<?= escape($product->productImage) ?>" alt="<?= escape($product->productName) ?>">
+            <img class="product-details-image" src="<?= escape($product->productImage) ?>" alt="<?= escape($product->productName) ?>">
             <h3><?= escape($product->productName) ?></h3>
             <p><?= escape($product->productDescription) ?></p>
             <p class="price"><?= "€" . escape($product->productCost) ?></p>
