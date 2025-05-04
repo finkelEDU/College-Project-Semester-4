@@ -1,38 +1,43 @@
 <?php
 class Cart {
-
+    private $items = [];
         // gathering all the items in the cart
-        public static function getItems() {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
+        public function __construct() {
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = [];
+            }
+            $this->items = $_SESSION['cart'];
         }
-        return $_SESSION['cart'];
-    }
+        //save cart items to sesjion 
+        private function save() {
+            $_SESSION['cart'] = $this->items;
+        }
 
     //for the icon in header
-    public static function getItemCount() {
-        if (!isset($_SESSION['cart'])) {
-            return 0;
-        }
-        return array_sum($_SESSION['cart']);
+    public function getItemCount() {
+        return array_sum($this->items);
     }
     
     //adds item to the cart, if already there, increase quantity
-    public static function addToCart($productId, $itemQuantity = 1) {
-        if (isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId] += $itemQuantity;
+    public function addToCart($productId, $itemQuantity = 1) {
+        if (isset($this->items[$productId])) {
+            $this->items[$productId] += $itemQuantity;
         } else {
-            $_SESSION['cart'][$productId] = $itemQuantity;
+            $this->items[$productId] = $itemQuantity;
         }
+        $this->save();
         return true;
     }
 
-    // clearrs that product from the cart
-    public static function removeFromCart($productId) {
-        if (isset($_SESSION['cart'][$productId])) {
-            unset($_SESSION['cart'][$productId]);
+    public function removeFromCart($productId) {
+        if (isset($this->items[$productId])) {
+            unset($this->items[$productId]);
+            $this->save();
             return true;
         }
         return false;
+    }
+    public function getItems() {
+        return $this->items;
     }
 }

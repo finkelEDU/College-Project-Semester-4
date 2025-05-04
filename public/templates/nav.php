@@ -1,6 +1,7 @@
 <?php
     $currentPageParam = $_GET['page'] ?? 'home';
     require_once '../models/Cart.php';
+    $navCart = new Cart();
 ?>
 
 <nav>
@@ -10,7 +11,7 @@
         <?php // user logged in show: ?>
         <a href="index.php?page=logout">LOG OUT</a>
         <a href="index.php?page=shopping_cart" class="<?php echo ($currentPageParam == 'shopping_cart') ? 'active' : ''; ?>">CART<?php 
-            $itemCount = Cart::getItemCount(); 
+           $itemCount = $navCart->getItemCount(); 
             echo  " <span>($itemCount)</span>"; 
         ?></a> 
         <?php if (isset($_SESSION["Admin"]) && $_SESSION["Admin"] === true): ?>

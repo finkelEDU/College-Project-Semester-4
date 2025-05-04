@@ -5,15 +5,15 @@ require_once '../models/Orders.php';
 
 class CartController {
     private $dbConnection;
-
+    private $cart;
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
+        $this->cart = new Cart(); 
     }
 
-    
     public function index() {
         //get current cart items
-        $cartItems = Cart::getItems();
+        $cartItems = $this->cart->getItems();
         $productIds = array_keys($cartItems);
         $products_by_id = []; 
 
@@ -79,7 +79,7 @@ class CartController {
     public function add() {
         if (isset($_POST['add']) && isset($_POST['product_id_hidden'])) {
             $id = $_POST['product_id_hidden'];
-            Cart::addToCart($id, 1);
+            $this->cart->addToCart($id, 1);
             header("Location: index.php?page=product_details&id=" . $id . "&added=true");
             exit;
         }
@@ -90,7 +90,7 @@ class CartController {
     public function remove() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            Cart::removeFromCart($id);
+            $this->cart->removeFromCart($id);
         }
         header("Location: index.php?page=shopping_cart");
         exit;

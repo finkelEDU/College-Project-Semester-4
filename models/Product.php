@@ -17,7 +17,7 @@ class Product{
 	}
 
 	//collect all products as product objects
-	public static function getAllProducts(PDO $connection): array {
+	public static function getAllProducts(PDO $connection) {
         $sql = "SELECT * FROM Product";
         $statement = $connection->prepare($sql);
         $statement->execute();
@@ -36,7 +36,7 @@ class Product{
     }
 
 	//get single product by id
-	public static function getProductById(PDO $connection, int $id): ?Product {
+	public static function getProductById(PDO $connection,  $id){
         $sql = "SELECT * FROM Product WHERE product_id = :id";
         $statement = $connection->prepare($sql);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
