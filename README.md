@@ -8,6 +8,10 @@
 - Fintan added all CRUD functions to the admin.php page and adminController.php.
 - We both discussed and planned our MVC together, then Oscar updated most code to have the MVC pattern.
 - Fintan created the database and tables.
-- Oscar updated code to be more efficient.
+- We then worked to update the code to be more efficient.
 
 We feel that we both contributed equally to the project overall (50% each).
+
+# References:
+__DIR__:
+https://stackoverflow.com/questions/4645082/get-absolute-path-of-initially-run-script

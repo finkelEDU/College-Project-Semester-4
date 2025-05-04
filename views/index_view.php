@@ -22,6 +22,7 @@
             "Steam Deck" => "images/steam_deck.jpg"
         );
 
+        //place a small icon next to each platform
         foreach ($products as $name => $iconPath) { 
           echo "<li><img src='" . $iconPath . "' alt='" . $name . " icon' class='platform-icon'>" . $name . "</li>"; 
         }

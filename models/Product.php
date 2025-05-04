@@ -42,7 +42,6 @@ class Product{
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
-
         if ($row) {
 	return new Product(
 		$row['product_id'],

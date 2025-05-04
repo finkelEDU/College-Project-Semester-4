@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../models/Orders.php';
+require_once __DIR__ . '/../models/Orders.php'; // __dir__ to get correct path for light testing in terminal
 require_once __DIR__ . '/../config.php';
 
 echo "Testing Order...\n";

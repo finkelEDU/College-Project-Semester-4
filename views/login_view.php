@@ -4,6 +4,7 @@
 <div class="login-box">
     <h1>LOGIN</h1>
 
+    <?php // if login fail, show error ?>
     <?php if (isset($error) && $error): ?>
         <p style="color: red;  margin-bottom: 15px;"><?php echo escape($error); ?></p>
     <?php endif; ?>

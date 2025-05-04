@@ -1,10 +1,11 @@
 <?php include "templates/header.php"; ?>
 
-
+<?php //success message if ordered, or a welcomer msg?>
 <?php if (isset($_GET['order']) && $_GET['order'] === 'success'): ?>
     <p id="welcomeMSG" style="color: lightgreen; border-color: lightgreen;">Thank you for your order!</p>
 <?php else: ?>
 <p id=welcomeMSG>
+<?php //if user logged in, show username?>
 <?php if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])): ?>
     Hello, <?= escape($_SESSION["Username"]) ?>, browse our latest catalogue here!
 <?php else: ?>

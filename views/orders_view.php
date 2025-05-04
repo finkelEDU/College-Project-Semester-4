@@ -14,6 +14,7 @@
             </tr>
         </thead>
         <tbody>
+            <?php // loop through orders, then display in table ?>
             <?php foreach ($orders as $order): ?>
                 <tr>
                 <td><?= escape($order['orders_id']); ?></td>

@@ -23,17 +23,18 @@ class SignupController {
         $formPassword = $_POST['inputPassword']; 
         $formEmail = $_POST['inputEmail'];
 
+        //email checker
         if (!filter_var($formEmail, FILTER_VALIDATE_EMAIL)) {
             $this->showSignupForm("Please enter a valid email address!");
             return;
         }
 
+        //password length check
         if (strlen($formPassword) < 5) {
             $this->showSignupForm("Password must be at least 5 characters!");
             return;
        }
 
-        try {
             //check username  if exists
             if (Member::usernameExists($this->dbConnection, $formUsername)) {
                 $this->showSignupForm("Username taken.");
@@ -47,17 +48,13 @@ class SignupController {
                 $formPassword,
                 $formEmail
             );
-
+            //on success send to login 
             if ($success) {
                 header("Location: index.php?page=login&signup=success"); 
                 exit;
             } else {
                 $this->showSignupForm("Signup Failed.");
             }
-
-        } catch(PDOException $error) {
-            $this->showSignupForm("DB error: " . $error->getMessage());
-        }
     }
 }
 ?>

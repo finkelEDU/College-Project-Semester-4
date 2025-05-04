@@ -37,6 +37,7 @@
     ?>
 </div>
 
+<?php //shows the total if the cart isnt empty ?>
 <?php if (!$cart_empty): ?>
     <div style="text-align: center; margin-top: 20px;">
         <h3>Total Order Cost: €<?= escape(number_format($total_cost, 2)); ?></h3>
@@ -46,6 +47,7 @@
     </div>
 <?php endif; ?>
 
+<?php //if user  logged in, show order history btn ?>
 <?php if (isset($_SESSION["UserID"])): ?>
     <div style="text-align: center;">
         <a href="index.php?page=order_history">

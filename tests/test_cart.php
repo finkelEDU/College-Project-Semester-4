@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../models/Cart.php';
+require_once __DIR__ . '/../models/Cart.php'; // __dir__ to get correct path for light testing in terminal
 //tests adding to cart.
 echo "Testing Cart...\n";
 $_SESSION['cart'] = [];

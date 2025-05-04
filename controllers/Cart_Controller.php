@@ -10,11 +10,14 @@ class CartController {
         $this->dbConnection = $connection;
     }
 
+    
     public function index() {
+        //get current cart items
         $cartItems = Cart::getItems();
         $productIds = array_keys($cartItems);
-        $products_by_id = [];
+        $products_by_id = []; 
 
+        //fetch all prod details for each item in cart
         foreach ($productIds as $id) {
             $product = Product::getProductById($this->dbConnection, $id);
             if ($product) {
@@ -27,7 +30,7 @@ class CartController {
                 ];
             }
         }
-
+        //calculate total cost
         $total_cost = 0;
         foreach ($cartItems as $id => $quantity) {
             if (isset($products_by_id[$id])) {
@@ -35,6 +38,7 @@ class CartController {
             }
         }
 
+        //basic ordering logic
         if (isset($_POST["buy"])) {
             if (isset($_SESSION["UserID"]) && !empty($cartItems)) {
                 $memberId = $_SESSION["UserID"];
@@ -50,6 +54,7 @@ class CartController {
                     }
                 }
 
+                //if order successful, clear cart and redirect
                 if ($orderSuccess) {
                     $_SESSION['cart'] = [];
                     header("Location: index.php?page=products&order=success");
@@ -66,11 +71,10 @@ class CartController {
             'products_by_id' => $products_by_id,
             'total_cost' => $total_cost
         ];
-        extract($viewData);
+        extract($viewData); //get all variables to use directly in view
         include '../views/shopping_view.php';
 
     }
-
     public function add() {
         if (isset($_POST['add']) && isset($_POST['product_id_hidden'])) {
             $id = $_POST['product_id_hidden'];
