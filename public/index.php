@@ -74,19 +74,72 @@ switch ($page) {
         $controller = new CartController($connection);
         $controller->add();
         break;
-
-    case 'cart_remove':
-        require_once '../controllers/Cart_Controller.php';
-        $controller = new CartController($connection);
-        $controller->remove();
-        break;
 		
 	case 'admin':
 		require_once '../controllers/Admin_Controller.php';
 		$controller = new AdminController($connection);
 		$controller->index();
 		
+		if(isset($_POST["submit_all_members"])){
+			$controller->readMembers($connection);
+		}else if(isset($_POST["submit_all_products"])){
+			$controller->readProducts($connection);
+		}else if(isset($_POST["submit_all_orders"])){
+			$controller->readOrders($connection);
+		}else if(isset($_POST["create_member"])){
+			$controller->createMember($connection);
+		}else if(isset($_POST["create_product"])){
+			$controller->createProduct($connection);
+		}else if(isset($_POST["create_order"])){
+			$controller->createOrder($connection);
+		}
 		break;
+		
+	case 'update_member':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->modifyMember($connection);
+		
+		if(isset($_POST["update_member"])){
+			$controller->updateMember($connection);
+		}
+		break;
+		
+	case 'update_product':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->modifyProduct($connection);
+		
+		if(isset($_POST["update_product"])){
+			$controller->updateProduct($connection);
+		}
+		break;
+	
+	case 'update_order':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->modifyOrder($connection);
+		
+		if(isset($_POST["update_order"])){
+			$controller->updateOrder($connection);
+		}
+		break;
+		
+	case 'delete_member':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->deleteMember($connection);
+		
+	case 'delete_product':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->deleteProduct($connection);
+		
+	case 'delete_order':
+		require_once '../controllers/Admin_Controller.php';
+		$controller = new AdminController($connection);
+		$controller->deleteOrder($connection);
+		
 
     default:
         echo "Page not found.";

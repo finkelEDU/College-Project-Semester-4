@@ -11,8 +11,38 @@ class AdminController{
 	public function index() {
         include '../views/admin_view.php';
     }
-
-	//Member Functions
+	
+	public function modifyMember($connection){
+		if(isset($_GET["id"])){
+			try{
+				$id = $_GET["id"];
+				$sql = "SELECT * FROM Member WHERE member_id = :member_id";
+				$statement = $connection->prepare($sql);
+				$statement->bindValue(":member_id", $id);
+				$statement->execute();
+				
+				$member = $statement->fetch(PDO::FETCH_ASSOC);
+			}catch(PDOException $error){
+				echo $sql . "<br>" . $error->getMessage();
+			}
+		}else{
+			echo "Something went wrong!";
+			exit;
+		}
+		
+		
+		echo "<form method='post'>";
+		foreach ($member as $key => $value) :
+		echo "<label for='" . $key . "'>";
+		echo ucfirst($key) . "</label>";
+		echo "<input type='text' name='" . $key . "' id='" . $key;
+		echo "' value='" . escape($value) . "'" ;
+		echo ($key === 'member_id' ? 'readonly' : null) . "><br>";
+		endforeach;
+		echo "<input type='submit' name='update_member' value='Submit'>";
+		echo "</form>";
+	}
+	
 	public function createMember($connection){
 		try{
 			$new_member = array(
@@ -70,8 +100,8 @@ class AdminController{
 				echo "<td>" . escape($row["member_email"]) . "</td>";
 				echo "<td>" . escape($row["member_type"]) . "</td>";
 				
-				echo "<td><a href='updateMember.php?id=" . escape($row['member_id']) . "'>Edit</a></td>";
-				echo "<td><a href='deleteMember.php?id=" . escape($row["member_id"]) . "'>Delete</a></td>";
+				echo "<td><a href='index.php?page=update_member&id=" . escape($row['member_id']) . "'>Edit</a></td>";
+				echo "<td><a href='index.php?page=delete_member&id=" . escape($row["member_id"]) . "'>Delete</a></td>";
 				
 				echo "</tr>";
 			}
@@ -84,7 +114,7 @@ class AdminController{
 	}//End of ReadMembers function
 	
 	
-	public function updateMember($connection){
+	public function updateMember($connection){		
 		try{
 			$member = [
 				"member_id"			=> escape($_POST["member_id"]),
@@ -105,7 +135,8 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->execute($member);
 			
-			header("Location: admin.php");
+			header("index.php?page=admin");
+			exit;
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
@@ -119,12 +150,44 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->bindValue(":id", $id);
 			$statement->execute();
+			
+			echo "Deleted entry!";
+			echo "<br><a href='index.php'>Back to Home Page</a>";
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
 	}
 	
-	//Product Functions
+	public function modifyProduct($connection){
+		if(isset($_GET["id"])){
+			try{
+				$id = $_GET["id"];
+				$sql = "SELECT * FROM Product WHERE product_id = :product_id";
+				$statement = $connection->prepare($sql);
+				$statement->bindValue(":product_id", $id);
+				$statement->execute();
+				
+				$product = $statement->fetch(PDO::FETCH_ASSOC);
+			}catch(PDOException $error){
+				echo $sql . "<br>" . $error->getMessage();
+			}
+		}else{
+			echo "Something went wrong!";
+			exit;
+		}
+		
+		echo "<form method='post'>";
+		foreach ($product as $key => $value) :
+		echo "<label for='" . $key . "'>";
+		echo ucfirst($key) . "</label>";
+		echo "<input type='text' name='" . $key . "' id='" . $key;
+		echo "' value='" . escape($value) . "'" ;
+		echo ($key === 'member_id' ? 'readonly' : null) . "><br>";
+		endforeach;
+		echo "<input type='submit' name='update_product' value='Submit'>";
+		echo "</form>";
+	}
+	
 	public function createProduct($connection){
 		try{
 			
@@ -184,8 +247,8 @@ class AdminController{
 				echo "<td>" . escape($row["product_cost"]) . "</td>";
 				echo "<td>" . escape($row["product_image"]) . "</td>";
 				
-				echo "<td><a href='updateProduct.php?id=" . escape($row['product_id']) . "'>Edit</a></td>";
-				echo "<td><a href='deleteProduct.php?id=" . escape($row["product_id"]) . "'>Delete</a></td>";
+				echo "<td><a href='index.php?page=update_product&id=" . escape($row['product_id']) . "'>Edit</a></td>";
+				echo "<td><a href='index.php?page=delete_product&id=" . escape($row["product_id"]) . "'>Delete</a></td>";
 				
 				echo "</tr>";
 			}
@@ -218,7 +281,8 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->execute($product);
 			
-			header("Location: admin.php");
+			header("index.php?page=admin");
+			exit;
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
@@ -237,7 +301,37 @@ class AdminController{
 		}
 	}
 	
-	//Orders Functions
+	public function modifyOrder($connection){
+		if(isset($_GET["id"])){
+			try{
+				$id = $_GET["id"];
+				$sql = "SELECT * FROM Orders WHERE orders_id = :orders_id";
+				$statement = $connection->prepare($sql);
+				$statement->bindValue(":orders_id", $id);
+				$statement->execute();
+				
+				$orders = $statement->fetch(PDO::FETCH_ASSOC);
+			}catch(PDOException $error){
+				echo $sql . "<br>" . $error->getMessage();
+			}
+		}else{
+			echo "Something went wrong!";
+			exit;
+		}
+		
+		
+		echo "<form method='post'>";
+		foreach ($orders as $key => $value) :
+		echo "<label for='" . $key . "'>";
+		echo ucfirst($key) . "</label>";
+		echo "<input type='text' name='" . $key . "' id='" . $key;
+		echo "' value='" . escape($value) . "'" ;
+		echo ($key === 'member_id' ? 'readonly' : null) . "><br>";
+		endforeach;
+		echo "<input type='submit' name='update_order' value='Submit'>";
+		echo "</form>";
+	}
+	
 	public function createOrder($connection){
 		try{			   
 			$sql = "INSERT INTO ORDERS (orders_date, product_name, member_id) VALUES (:orders_date, :product_name, :member_id)";
@@ -286,8 +380,8 @@ class AdminController{
 				echo "<td>" . escape($row["product_name"]) . "</td>";
 				echo "<td>" . escape($row["member_id"]) . "</td>";
 				
-				echo "<td><a href='updateOrder.php?id=" . escape($row['orders_id']) . "'>Edit</a></td>";
-				echo "<td><a href='deleteOrder.php?id=" . escape($row["orders_id"]) . "'>Delete</a></td>";
+				echo "<td><a href='index.php?page=update_order&id=" . escape($row['orders_id']) . "'>Edit</a></td>";
+				echo "<td><a href='index.php?page=delete_order&id=" . escape($row["orders_id"]) . "'>Delete</a></td>";
 				
 				echo "</tr>";
 			}
@@ -318,7 +412,8 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->execute($orders);
 			
-			header("Location: admin.php");
+			header("index.php?page=admin");
+			exit;
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
