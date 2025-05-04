@@ -2,19 +2,15 @@
 
 <div class="product-container">
     <?php
-        //Initalize $cost variable to use
-        $total_cost = 0;
-        $cart_empty = true;
+        $cart_empty = empty($cart_items);
     
-        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-            $cart_empty = false;
-            foreach ($_SESSION['cart'] as $product_id => $quantity):
+        if (!$cart_empty) {
+            foreach ($cart_items as $product_id => $quantity):
                 // check product exists
                 if (isset($products_by_id[$product_id])):
                     $item = $products_by_id[$product_id];
                     $item_cost = $item['product_cost'];
                     $subtotal = $item_cost * $quantity;
-                    $total_cost += $subtotal;
     ?>
         
         <div class="product-item">
@@ -28,8 +24,8 @@
             </a>
         </div>
     <?php
-                endif; // end check if product exists
-            endforeach; // end cart loop
+                endif; 
+            endforeach; 
         } 
 
         if ($cart_empty) {

@@ -8,7 +8,7 @@
         <p class="price"><?= escape(number_format($product->productCost, 2)) ?></p>
         <a href="index.php?page=products"><button class="btn-primary">Back to Products</button></a>
 
-        <form method="post" action="index.php?page=product_details&id=<?= escape($product->productID) ?>">
+        <form method="post" action="index.php?page=cart_add">
             <input type="hidden" name="product_id_hidden" value="<?= escape($product->productID) ?>">
             <input class="btn-primary" type="submit" name="add" value="Add to Cart">
         </form>

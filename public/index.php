@@ -64,11 +64,16 @@ switch ($page) {
         
 
     case 'shopping_cart':
-        require_once '../controllers/Product_Controller.php';
-        $controller = new ProductController($connection);
-        $controller->cart();
+        require_once '../controllers/Cart_Controller.php';
+        $controller = new CartController($connection);
+        $controller->index();
         break;
 
+    case 'cart_add': 
+        require_once '../controllers/Cart_Controller.php';
+        $controller = new CartController($connection);
+        $controller->add();
+        break;
 
     default:
         echo "Page not found.";

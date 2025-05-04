@@ -1,18 +1,30 @@
 <?php
 class Cart {
-    public function __construct() {
+        public static function getItems() {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
-    }
-    //adds ore increments
-    public function add(int $id): void {
-        $_SESSION['cart'][$id] = ($_SESSION['cart'][$id] ?? 0) + 1;
-    }
-    public function all(): array {
         return $_SESSION['cart'];
     }
-    public function isEmpty(): bool {
-        return empty($_SESSION['cart']);
+
+    
+    public static function addToCart($productId, $quantity = 1) {
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+        
+        if (isset($_SESSION['cart'][$productId])) {
+            $_SESSION['cart'][$productId] += $quantity;
+        } else {
+            $_SESSION['cart'][$productId] = $quantity;
+        }
+        return true;
+    }
+
+    public static function getItemCount() {
+        if (!isset($_SESSION['cart'])) {
+            return 0;
+        }
+        return array_sum($_SESSION['cart']);
     }
 }

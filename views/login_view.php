@@ -8,7 +8,7 @@
         <p style="color: red; margin-bottom: 15px;"><?php echo escape($error); ?></p>
     <?php endif; ?>
     
-    <form method="post" action="index.php?page=login"> <?php?>
+    <form method="post" action="index.php?page=login"> 
         <label for="inputUsername"><strong>Username</strong></label>
         <input type="text" name="inputUsername" id="inputUsername" required>
 
