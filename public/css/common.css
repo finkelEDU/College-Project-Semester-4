@@ -1,8 +1,8 @@
 :root {
-    --bg-dark: #1e1e1e;
+    --bg-dark: #242424;
     --bg-medium: #424242;
     --text-light: #f5eddb;
-    --text-medium: #b0b0b0;
+    --text-medium: #c0baac;
     --accent: #4471a1;
     --accent-hover: #3c638d;
     --border-light: #626262;
@@ -20,12 +20,6 @@ h2{
     text-align: center;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="date"] {
-    font-size: inherit; 
-}
 
 label {
     display: block;
@@ -42,7 +36,7 @@ td, th {
     padding: 5px;
     border-bottom: 1px solid var(--border-light);
 }
-
+/* Button */
 .btn-primary {
     background-color: var(--accent);
     color: var(--text-light);
@@ -63,6 +57,8 @@ td, th {
     background-color: var(--accent-hover);
 }
 
+/* Navigation Bar */
+
 nav a {
     color: var(--text-light);
     padding: 20px 10px;
@@ -82,6 +78,8 @@ nav a.active {
     font-weight: bold; 
 }
 
+/* Header */
+
 #HeaderBanner {
     display: flex;
     align-items: center;
@@ -98,20 +96,22 @@ nav a.active {
     margin-right: auto;
 }
 
+/* home page */
+
 .index-content {
     max-width: 750px;
     margin: 30px 30px;
     padding: 20px 30px;
     background-color: var(--bg-medium);
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid var(--border-light);
 }
 .index-content p {
     line-height: 1.6;
     color: var(--text-medium);
     margin-bottom: 15px;
+    
 }
-
 
 .index-content .intro-text {
     text-align: center;
@@ -120,25 +120,21 @@ nav a.active {
     margin-bottom: 25px;
 }
 
-.index-content .cta-text {
-    font-weight: bold;
-    margin-top: 25px;
-    color: var(--text-light);
-}
 .website-description,
 .platforms, #welcomeMSG{
   border: 1px solid var(--border-light); 
   padding: 15px;        
   margin-bottom: 20px;  
-  background-color: var(--border-light);
-  border-radius: 5px;
+  background-color: var(--bg-dark);
+  border-radius: 8px;
   
 }
 
+/* home, list style */
 .platform-list li {
     display: flex;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     padding-left: 0;
     position: relative;
     color: var(--text-light);
@@ -148,12 +144,12 @@ nav a.active {
 .platform-icon {
     width: 55px;
     height: 55px;
-    margin-right: 8px;
+    margin-right: 18px;
     object-fit: contain;
     vertical-align: middle;
 }
 
-
+/* product list */
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -210,7 +206,7 @@ nav a.active {
     flex-grow: 0;
 }
 
-
+/* product details */
 .product-details-container {
     max-width: 600px;
     margin: 30px auto;
@@ -252,7 +248,7 @@ nav a.active {
     color: var(--accent);
 }
 
-
+/* message box */
 #welcomeMSG{
     width: 520px;
     height: auto;
@@ -262,6 +258,7 @@ nav a.active {
     background-color: var(--bg-medium);
 }
 
+/* login box */
 
 .login-box {
     width: 300px;
@@ -315,6 +312,7 @@ nav a.active {
     background-color: var(--accent-hover);
 }
 
+/* order history */
 
 .order-history-table {
     width: 80%;

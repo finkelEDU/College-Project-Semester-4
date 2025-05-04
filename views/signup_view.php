@@ -7,10 +7,9 @@
     </p>
 
     <?php
-    if (isset($message) && $message):
-        $messageColor = $isError ? 'red' : 'green';
+    if (isset($message)):
     ?>
-        <p style="color: <?php echo $messageColor; ?>; margin-bottom: 15px;"><?php echo escape($message); ?></p>
+        <p><?php echo escape($message); ?></p>
     <?php endif; ?>
 
 

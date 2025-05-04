@@ -9,7 +9,7 @@
     
 
     <div class="platforms">
-    <p>Here, we have products available for the following platforms:</p> 
+    <p class='cta-text'>Here, we have products available for the following platforms:</p> 
     <ul class="platform-list"> 
         <?php
         $products = array(
