@@ -10,6 +10,7 @@ class CartController {
         $this->dbConnection = $connection;
         $this->cart = new Cart(); 
         $this->productModel = new Product($this->dbConnection); 
+        $this->ordersModel = new Orders($this->dbConnection); 
     }
 
     public function index() {
@@ -49,7 +50,7 @@ class CartController {
                 foreach ($cartItems as $productId => $quantity) {
                     if (isset($products_by_id[$productId])) {
                         $productName = $products_by_id[$productId]['product_name'];
-                        if (!Orders::createOrder($this->dbConnection, $memberId, $productName, $currentDateTime)) { 
+                        if (!$this->ordersModel->createOrder($memberId, $productName, $currentDateTime)) { 
                             $orderSuccess = false;
                             break;
                         }

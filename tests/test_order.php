@@ -7,11 +7,15 @@ echo "Testing Order...\n";
     $dsn = "mysql:host=" . $host . ";dbname=" . $dbname; 
     $connection = new PDO($dsn, $username, $password, $options); 
 
+    $ordersModel = new Orders($connection);
+
     //test data
     $testMemberId = 3; //just to test 
     $testProductName = "Test Product";
+    $testOrderDate = date('Y-m-d H:i:s');
 
-    $result = Orders::createOrder($connection, $testMemberId, $testProductName);
+    $result = $ordersModel->createOrder($testMemberId, $testProductName, $testOrderDate);
+
     if ($result === true) {
         echo "Order Test Success.\n";
     } else {
