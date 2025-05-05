@@ -4,8 +4,10 @@ require_once '../models/Member.php';
 class LoginController {
 
     private $dbConnection;
+    private $memberModel;
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
+        $this->memberModel = new Member($this->dbConnection);
     }
     //shows login form
     public function showLoginForm($error = null) {
@@ -23,7 +25,7 @@ class LoginController {
                 $inputUser = $_POST["inputUsername"];
                 $inputPass = $_POST["inputPassword"]; 
                 // authenticate through member model 
-                $user = Member::authenticate($this->dbConnection, $inputUser, $inputPass);
+                $user = $this->memberModel->authenticate($inputUser, $inputPass);
 
                 if ($user) {
                     // if log in successful, store their data 

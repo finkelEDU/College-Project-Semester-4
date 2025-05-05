@@ -4,8 +4,10 @@ require_once '../models/Member.php';
 class SignupController {
 
     private $dbConnection;
+    private $memberModel;
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
+        $this->memberModel = new Member($this->dbConnection);
     }
 
     public function showSignupForm($message = null, $isError = true) {
@@ -36,14 +38,13 @@ class SignupController {
        }
 
             //check username  if exists
-            if (Member::usernameExists($this->dbConnection, $formUsername)) {
+            if ($this->memberModel->usernameExists($formUsername)) {
                 $this->showSignupForm("Username taken.");
                 return;
             }
 
             // create member using the passed data
-            $success = Member::createMember(
-                $this->dbConnection,
+            $success = $this->memberModel->createMember(
                 $formUsername,
                 $formPassword,
                 $formEmail

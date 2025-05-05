@@ -19,7 +19,7 @@
             <p>Quantity: <?= escape($quantity); ?></p>
             <p class="price">Unit Price: €<?= escape($item_cost); ?></p>
             <p>Subtotal: €<?= escape($subtotal); ?></p>
-            <a href="index.php?page=product_details&id=<?= escape($item["product_id"]); ?>">
+            <a href="index.php?page=product_details&id=<?= escape($productInfo["product_id"]); ?>">
                 <button class="btn-primary">View Details</button>
             </a>
             <a href="index.php?page=cart_remove&id=<?php echo escape($productInfo["product_id"]); ?>">

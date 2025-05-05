@@ -6,6 +6,9 @@ require_once '../models/Orders.php';
 class CartController {
     private $dbConnection;
     private $cart;
+    private $productModel;
+    private $ordersModel;
+
     public function __construct(PDO $connection) {
         $this->dbConnection = $connection;
         $this->cart = new Cart(); 
@@ -45,7 +48,7 @@ class CartController {
             if (isset($_SESSION["UserID"]) && !empty($cartItems)) {
                 $memberId = $_SESSION["UserID"];
                 $orderSuccess = true;
-                $currentDateTime = date('Y-m-d');
+                $currentDateTime = date('Y-m-d H:i:s');
 
                 foreach ($cartItems as $productId => $quantity) {
                     if (isset($products_by_id[$productId])) {

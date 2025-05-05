@@ -1,10 +1,15 @@
 <?php
 class Member{
+
+	private $connection;
+    public function __construct(PDO $connection) {
+        $this->connection = $connection;
+    }
 	// authentication
-	public static function authenticate(PDO $connection, $username, $password) {
+	public function authenticate($username, $password) {
 		// selelect all data where username matches
         $sql = "SELECT * FROM Member WHERE member_username = :username";
-        $statement = $connection->prepare($sql);
+        $statement = $this->connection->prepare($sql);
         $statement->bindParam(":username", $username); 
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -13,19 +18,19 @@ class Member{
     }
 	
 	//checks username against db
-	public static function usernameExists(PDO $connection, $username) {
+	public function usernameExists($username) {
 		//select 1 where username matches
         $sql = "SELECT 1 FROM Member WHERE member_username = :username LIMIT 1";
-        $statement = $connection->prepare($sql);
+        $statement = $this->connection->prepare($sql);
         $statement->bindParam(':username', $username);
         $statement->execute();
         return $statement->fetchColumn() !== false;
     }
 
-	public static function createMember(PDO $connection, $username, $password, $email,) {
+	public function createMember($username, $password, $email,) {
 		$dataToInsert = [
 			'username' => $username,
-			'password' => $password,
+			'password' => $password,	
 			'email'    => $email,
 			'type'     => 'Member',
 		];
@@ -43,7 +48,7 @@ class Member{
             implode(", ", $columnNames),
             implode(", ", $placeholders)
         );
-            $statement = $connection->prepare($sql);
+            $statement = $this->connection->prepare($sql);
             return $statement->execute($dataToInsert); 
 	}
 }

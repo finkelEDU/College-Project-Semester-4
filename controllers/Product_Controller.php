@@ -21,8 +21,8 @@ class ProductController {
         if (isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $product = $this->productModel->getProductById($id); 
+                include '../views/product_details_view.php';
     }
-        include '../views/product_details_view.php';
 }   
 }
 ?>

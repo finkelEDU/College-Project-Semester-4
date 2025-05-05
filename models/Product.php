@@ -10,8 +10,8 @@ class Product {
 
     private $connection;
 
-	//create and store connection
-    public function __construct(PDO $connection , $productID, $productName, $productDescription, $productCost , $productImage ) {
+
+    public function __construct(PDO $connection , $productID = null, $productName = null, $productDescription = null, $productCost = null, $productImage = null) {
         $this->connection = $connection; 
 
         $this->productID = $productID;

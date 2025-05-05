@@ -135,6 +135,7 @@ switch ($page) {
 		require_once '../controllers/Admin_Controller.php';
 		$controller = new AdminController($connection);
 		$controller->deleteMember($connection);
+        break;
 		
 	case 'delete_product':
 		require_once '../controllers/Admin_Controller.php';
@@ -145,7 +146,7 @@ switch ($page) {
 		require_once '../controllers/Admin_Controller.php';
 		$controller = new AdminController($connection);
 		$controller->deleteOrder($connection);
-		
+		break;
 
     case 'order_history':
         require_once '../controllers/Orders_Controller.php';

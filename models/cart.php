@@ -29,6 +29,7 @@ class Cart {
         return true;
     }
 
+    //remove item from the cart, if not there, return false
     public function removeFromCart($productId) {
         if (isset($this->items[$productId])) {
             unset($this->items[$productId]);
@@ -37,7 +38,14 @@ class Cart {
         }
         return false;
     }
+
     public function getItems() {
         return $this->items;
+    }
+
+    //clears cart
+    public function clearCart() {
+        $this->items = [];
+        $this->save();    
     }
 }
