@@ -135,8 +135,8 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->execute($member);
 			
-			header("index.php?page=admin");
-			exit;
+			echo "Updated entry!";
+			echo "<a href='index.php'>Return to Home Page</a>";
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
@@ -154,7 +154,8 @@ class AdminController{
 			echo "Deleted entry!";
 			echo "<br><a href='index.php'>Back to Home Page</a>";
 		}catch(PDOException $error){
-			echo $sql . "<br>" . $error->getMessage();
+			echo "Cannot delete someone who has made an order!<br>";
+			echo "<a href='index.php'>Return to Home Page</a>";
 		}
 	}
 	
@@ -281,8 +282,8 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->execute($product);
 			
-			header("index.php?page=admin");
-			exit;
+			echo "Updated entry!";
+			echo "<a href='index.php'>Return to Home Page</a>";
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
@@ -296,6 +297,9 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->bindValue(":id", $id);
 			$statement->execute();
+			
+			echo "Deleted entry!";
+			echo "<a href='index.php'>Return to Home Page</a>";
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
@@ -412,8 +416,8 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->execute($orders);
 			
-			header("index.php?page=admin");
-			exit;
+			echo "Updated entry!";
+			echo "<a href='index.php'>Return to Home Page</a>";
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
@@ -427,6 +431,9 @@ class AdminController{
 			$statement = $connection->prepare($sql);
 			$statement->bindValue(":id", $id);
 			$statement->execute();
+			
+			echo "Deleted entry!";
+			echo "<a href='index.php'>Return to Home Page</a>";
 		}catch(PDOException $error){
 			echo $sql . "<br>" . $error->getMessage();
 		}
