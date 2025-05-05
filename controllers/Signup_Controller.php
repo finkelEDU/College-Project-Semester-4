@@ -10,7 +10,7 @@ class SignupController {
         $this->memberModel = new Member($this->dbConnection);
     }
 
-    public function showSignupForm($message = null, $isError = true) {
+    public function showSignupForm() {
         include '../views/signup_view.php';
     }
 
@@ -33,13 +33,15 @@ class SignupController {
 
         //password length check
         if (strlen($formPassword) < 5) {
-            $this->showSignupForm("Password must be at least 5 characters!");
+            $this->showSignupForm();
+			echo "Password must be at least 5 characters!";
             return;
        }
 
             //check username  if exists
             if ($this->memberModel->usernameExists($formUsername)) {
-                $this->showSignupForm("Username taken.");
+                $this->showSignupForm();
+				echo "Username taken";
                 return;
             }
 
@@ -54,7 +56,8 @@ class SignupController {
                 header("Location: index.php?page=login&signup=success"); 
                 exit;
             } else {
-                $this->showSignupForm("Signup Failed.");
+                $this->showSignupForm();
+				echo "Signup Failed.";
             }
     }
 }

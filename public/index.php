@@ -41,7 +41,7 @@ switch ($page) {
      case 'signup': 
         require_once '../controllers/Signup_Controller.php';
         $controller = new SignupController($connection);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST["submit"])) {
             $controller->handleSignup(); 
         } else {
             $controller->showSignupForm(); 
